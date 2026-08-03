@@ -1,0 +1,743 @@
+################################################################################
+#
+# SMOKED GLASS 2.0
+# Bellezza Vela Design System
+#
+# ------------------------------------------------------------------------------
+#
+# Milestone 1
+#
+# Objective
+#
+# Remove the remaining Home Assistant identity while introducing the
+# Bellezza Vela design language.
+#
+# This theme is organised by design concepts rather than Home Assistant
+# variables. Every section describes WHY something exists before HOW it
+# is implemented.
+#
+################################################################################
+
+Smoked Glass 2.0:
+
+################################################################################
+#
+# MATERIAL LIBRARY
+#
+# These are the only colours that should ever exist inside the theme.
+#
+################################################################################
+
+  ##########################################################################
+  # Hull
+  ##########################################################################
+
+  sg-hull:                  "#0F1113"
+
+  ##########################################################################
+  # Smoked Glass
+  ##########################################################################
+
+  sg-glass-100:             "#181B1D"
+  sg-glass-200:             "#202427"
+  sg-glass-300:             "#2A2F33"
+  sg-glass-400:             "#353B40"
+
+  ##########################################################################
+  # Marine Brass
+  ##########################################################################
+
+  sg-brass:                 "#B58A46"
+  sg-brass-hover:           "#C19652"
+  sg-brass-active:          "#D0A762"
+
+  ##########################################################################
+  # Typography
+  ##########################################################################
+
+  sg-text-primary:          "#F0ECE6"
+  sg-text-secondary:        "#D8D1C8"
+  sg-text-muted:            "#9F9A93"
+  sg-text-disabled:         "#6B6762"
+
+  ##########################################################################
+  # Semantic Colours
+  ##########################################################################
+
+  sg-success:               "#4F875F"
+  sg-warning:               "#C78D38"
+  sg-danger:                "#A5484A"
+  sg-water:                 "#4E7DA5"
+
+  ##########################################################################
+  # Glass Details
+  ##########################################################################
+
+  sg-border-soft:           "rgba(255,255,255,0.04)"
+  sg-border-medium:         "rgba(255,255,255,0.08)"
+
+  sg-shadow-soft:           "0 4px 12px rgba(0,0,0,0.18)"
+  sg-shadow-medium:         "0 8px 18px rgba(0,0,0,0.25)"
+
+################################################################################
+#
+# TYPOGRAPHY
+#
+# Bellezza Vela never uses pure white.
+#
+################################################################################
+
+  primary-text-color:       "var(--sg-text-primary)"
+  text-primary-color:       "var(--sg-text-primary)"
+
+  secondary-text-color:     "var(--sg-text-secondary)"
+
+  disabled-text-color:      "var(--sg-text-disabled)"
+
+################################################################################
+#
+# BACKGROUNDS
+#
+# Cards should appear to float above the wallpaper.
+#
+################################################################################
+
+  primary-background-color:     "var(--sg-glass-100)"
+  secondary-background-color:   "var(--sg-glass-200)"
+
+  lovelace-background:          "var(--sg-hull)"
+
+  app-header-background-color:  "rgba(24,27,29,0.75)"
+
+################################################################################
+#
+# CARDS
+#
+# Cards are made from smoked glass.
+#
+################################################################################
+
+  card-background-color:        "rgba(24,27,29,0.75)"
+  ha-card-background:           "rgba(24,27,29,0.75)"
+
+  ha-card-border-radius:        "14px"
+
+  ha-card-border-width:         "1px"
+
+  ha-card-border-color:         "var(--sg-border-soft)"
+
+  ha-card-box-shadow:           "var(--sg-shadow-soft)"
+
+################################################################################
+#
+# DIVIDERS
+#
+################################################################################
+
+  divider-color:                "rgba(255,255,255,0.05)"
+
+################################################################################
+#
+# ICONS
+#
+################################################################################
+
+  state-icon-color:             "var(--sg-text-muted)"
+
+  state-icon-active-color:      "var(--sg-brass)"
+
+################################################################################
+#
+# SIDEBAR
+#
+# Calm.
+# Quiet.
+# Never dominant.
+#
+################################################################################
+
+  sidebar-background-color:     "rgba(15,17,19,0.92)"
+
+  sidebar-icon-color:           "var(--sg-text-muted)"
+
+  sidebar-text-color:           "var(--sg-text-secondary)"
+
+  sidebar-selected-icon-color:  "var(--sg-brass)"
+
+  sidebar-selected-text-color:  "var(--sg-text-primary)"
+
+  sidebar-selected-background-color: "rgba(32,36,39,0.70)"
+
+################################################################################
+#
+# LINKS
+#
+# Brass represents interaction.
+#
+################################################################################
+
+  primary-color:                "var(--sg-brass)"
+
+  accent-color:                 "var(--sg-brass)"
+
+################################################################################
+#
+# STATUS COLOURS
+#
+################################################################################
+
+  success-color:                "var(--sg-success)"
+
+  warning-color:                "var(--sg-warning)"
+
+  error-color:                  "var(--sg-danger)"
+
+  info-color:                   "var(--sg-water)"
+
+################################################################################
+#
+# FORMS
+#
+# Milestone 2
+#
+# Objective:
+# Eliminate the remaining white Material Design components.
+#
+################################################################################
+
+  ##########################################################################
+  # Legacy HA form colours (these are proven to work)
+  ##########################################################################
+
+  ha-color-form-background:              "rgba(24,27,29,0.88)"
+  ha-color-form-background-hover:        "rgba(32,36,39,0.92)"
+  ha-color-form-background-disabled:     "rgba(24,27,29,0.55)"
+
+  ha-color-form-ink-color:               "var(--sg-text-primary)"
+
+  ##########################################################################
+  # Text fields
+  ##########################################################################
+
+  ha-textfield-fill-color:               "rgba(24,27,29,0.88)"
+  ha-textfield-ink-color:                "var(--sg-text-primary)"
+
+  input-fill-color:                      "rgba(24,27,29,0.88)"
+  input-disabled-fill-color:             "rgba(24,27,29,0.50)"
+
+  input-ink-color:                       "var(--sg-text-primary)"
+  input-label-ink-color:                 "var(--sg-text-secondary)"
+
+  input-disabled-ink-color:              "var(--sg-text-disabled)"
+
+  input-idle-line-color:                 "rgba(255,255,255,0.10)"
+  input-hover-line-color:                "var(--sg-brass)"
+
+  input-dropdown-icon-color:             "var(--sg-brass)"
+
+  ##########################################################################
+  # Material text fields
+  ##########################################################################
+
+  mdc-text-field-fill-color:             "rgba(24,27,29,0.88)"
+
+  mdc-text-field-idle-line-color:        "rgba(255,255,255,0.10)"
+  mdc-text-field-hover-line-color:       "var(--sg-brass)"
+
+  mdc-text-field-label-ink-color:        "var(--sg-text-secondary)"
+
+  ##########################################################################
+  # Material selects
+  ##########################################################################
+
+  mdc-select-fill-color:                 "rgba(24,27,29,0.88)"
+
+  mdc-select-idle-line-color:            "rgba(255,255,255,0.10)"
+  mdc-select-hover-line-color:           "var(--sg-brass)"
+
+  mdc-select-label-ink-color:            "var(--sg-text-secondary)"
+
+  ##########################################################################
+  # Menus
+  ##########################################################################
+
+  material-menu-background-color:        "rgba(24,27,29,0.96)"
+  material-menu-color:                   "var(--sg-text-primary)"
+
+  ##########################################################################
+  # Dialogs
+  ##########################################################################
+
+  dialog-background-color:               "rgba(24,27,29,0.95)"
+  paper-dialog-background-color:         "rgba(24,27,29,0.95)"
+
+  mdc-dialog-container-color:            "rgba(24,27,29,0.95)"
+
+  mdc-dialog-heading-ink-color:          "var(--sg-text-primary)"
+  mdc-dialog-supporting-text-color:      "var(--sg-text-secondary)"
+
+  ##########################################################################
+  # Search fields
+  ##########################################################################
+
+  search-bar-background-color:           "rgba(24,27,29,0.88)"
+
+  ##########################################################################
+  # Lists
+  ##########################################################################
+
+  material-list-item-selected-color:     "var(--sg-brass)"
+  material-list-item-hover-color:        "rgba(181,138,70,0.10)"
+
+################################################################################
+#
+# MILESTONE 3
+#
+# HOME ASSISTANT EXORCISM
+#
+# Objective:
+# Remove the remaining Home Assistant identity.
+#
+################################################################################
+
+  ##########################################################################
+  # Home Assistant Design Tokens
+  ##########################################################################
+
+  --ha-color-primary:                "var(--sg-brass)"
+  --ha-color-primary-40:             "var(--sg-brass)"
+  --ha-color-primary-50:             "var(--sg-brass)"
+  --ha-color-primary-60:             "var(--sg-brass)"
+
+  --ha-color-text-link:              "var(--sg-brass)"
+
+  --ha-color-focus:                  "rgba(181,138,70,0.35)"
+
+  ##########################################################################
+  # Material Design
+  ##########################################################################
+
+  md-sys-color-primary:              "var(--sg-brass)"
+
+  ##########################################################################
+  # Radio buttons
+  ##########################################################################
+
+  ha-radio-option-active-color:              "var(--sg-brass)"
+  ha-radio-option-checked-background-color:  "rgba(181,138,70,0.18)"
+
+  ##########################################################################
+  # Links
+  ##########################################################################
+
+  link-color:                         "var(--sg-brass)"
+  markdown-link-color:                "var(--sg-brass)"
+
+  ##########################################################################
+  # Tooltips
+  ##########################################################################
+
+  ha-tooltip-background-color:        "rgba(24,27,29,0.96)"
+  ha-tooltip-text-color:              "var(--sg-text-primary)"
+
+  ##########################################################################
+  # Snackbars
+  ##########################################################################
+
+  mdc-snackbar-container-color:       "rgba(24,27,29,0.96)"
+  mdc-snackbar-supporting-text-color: "var(--sg-text-primary)"
+
+###############################################################################
+#
+# VALIDATED HOME ASSISTANT 2026 MAPPINGS
+#
+# Ported from Smoked Glass 1.9.6
+#
+###############################################################################
+
+###############################################################################
+# Switches (validated from 1.9.6)
+###############################################################################
+
+  ha-switch-background-color:           "var(--sg-glass-200)"
+  ha-switch-checked-background-color:   "var(--sg-glass-200)"
+
+  ha-switch-thumb-background-color:     "var(--sg-glass-300)"
+  ha-switch-checked-thumb-background-color: "var(--sg-brass)"
+
+  ha-switch-checked-track-color:        "rgba(181,138,70,0.45)"
+  ha-switch-unchecked-track-color:      "var(--sg-border)"
+
+  ha-switch-checked-thumb-color:        "#111111"
+  ha-switch-unchecked-thumb-color:      "var(--sg-text-primary)"
+
+  ###########################################################################
+  # Radio buttons
+  ###########################################################################
+
+  ha-radio-option-active-color:             "var(--sg-brass)"
+  ha-radio-option-checked-background-color: "rgba(181,138,70,0.20)"
+
+  ###########################################################################
+  # Focus
+  ###########################################################################
+
+  --ha-color-focus:                         "rgba(181,138,70,0.35)"
+
+  ###########################################################################
+  # Home Assistant Design Tokens
+  ###########################################################################
+
+  --ha-color-primary-40:                    "var(--sg-brass)"
+  --ha-color-primary-50:                    "var(--sg-brass)"
+  --ha-color-primary-60:                    "var(--sg-brass)"
+
+  --ha-color-text-link:                     "var(--sg-brass)"
+
+  ###########################################################################
+  # Material Design 3
+  ###########################################################################
+
+  md-sys-color-primary:                     "var(--sg-brass)"
+
+################################################################################
+#
+# MENUS
+#
+################################################################################
+
+  material-menu-background-color: "rgba(24,27,29,0.96)"
+
+  material-menu-color:            "var(--sg-text-primary)"
+
+################################################################################
+#
+# BUTTONS
+#
+################################################################################
+
+  mdc-theme-primary:              "var(--sg-brass)"
+
+  mdc-theme-secondary:            "var(--sg-brass)"
+
+################################################################################
+#
+# FOCUS
+#
+# Brass indicates interaction.
+#
+################################################################################
+
+  mdc-theme-on-primary:           "var(--sg-text-primary)"
+
+  mdc-theme-on-secondary:         "var(--sg-text-primary)"
+
+################################################################################
+#
+# LISTS
+#
+################################################################################
+
+  material-list-item-selected-color: "var(--sg-brass)"
+
+  material-list-item-hover-color:    "rgba(181,138,70,0.10)"
+
+################################################################################
+#
+# LINKS
+#
+################################################################################
+
+  link-color:                     "var(--sg-brass)"
+
+  markdown-link-color:            "var(--sg-brass)"
+
+################################################################################
+#
+# SCROLLBARS
+#
+################################################################################
+
+  scrollbar-thumb-color:          "rgba(181,138,70,0.45)"
+
+  scrollbar-track-color:          "rgba(24,27,29,0.30)"
+
+################################################################################
+#
+# CONTROLS
+#
+# Controls are the pieces of the interface that the user touches.
+# Brass indicates interaction.
+#
+################################################################################
+
+###############################################################################
+# SWITCHES
+###############################################################################
+
+  switch-checked-button-color:        "var(--sg-brass)"
+  switch-checked-track-color:         "rgba(181,138,70,0.45)"
+
+  switch-unchecked-button-color:      "var(--sg-glass-300)"
+  switch-unchecked-track-color:       "rgba(255,255,255,0.12)"
+
+###############################################################################
+# MATERIAL SWITCHES
+###############################################################################
+
+  mdc-switch-selected-track-color:        "rgba(181,138,70,0.45)"
+  mdc-switch-selected-handle-color:       "var(--sg-brass)"
+
+  mdc-switch-unselected-track-color:      "rgba(255,255,255,0.12)"
+  mdc-switch-unselected-handle-color:     "var(--sg-glass-300)"
+
+###############################################################################
+# CHECKBOXES
+###############################################################################
+
+  mdc-checkbox-unchecked-color:           "var(--sg-text-muted)"
+  mdc-checkbox-disabled-color:            "rgba(255,255,255,0.20)"
+  mdc-checkbox-ink-color:                 "var(--sg-brass)"
+
+###############################################################################
+# RADIO BUTTONS
+###############################################################################
+
+  mdc-radio-unchecked-color:              "var(--sg-text-muted)"
+  mdc-radio-disabled-color:               "rgba(255,255,255,0.20)"
+  mdc-radio-checked-color:                "var(--sg-brass)"
+
+###############################################################################
+# SLIDERS
+###############################################################################
+
+  mdc-slider-handle-color:                "var(--sg-brass)"
+  mdc-slider-focus-handle-color:          "var(--sg-brass-hover)"
+  mdc-slider-hover-handle-color:          "var(--sg-brass-hover)"
+
+  mdc-slider-active-track-color:          "var(--sg-brass)"
+  mdc-slider-inactive-track-color:        "rgba(255,255,255,0.14)"
+
+###############################################################################
+# CHIPS
+###############################################################################
+
+  mdc-chip-label-text-color:              "var(--sg-text-primary)"
+  mdc-chip-container-color:               "rgba(24,27,29,0.88)"
+  mdc-chip-selected-container-color:      "rgba(181,138,70,0.20)"
+
+###############################################################################
+# BUTTONS
+###############################################################################
+
+  mdc-filled-button-container-color:      "var(--sg-brass)"
+  mdc-filled-button-label-text-color:     "var(--sg-hull)"
+
+  mdc-outlined-button-label-text-color:   "var(--sg-brass)"
+  mdc-outlined-button-outline-color:      "rgba(181,138,70,0.40)"
+
+###############################################################################
+# RIPPLE EFFECT
+###############################################################################
+
+  mdc-ripple-color:                       "rgba(181,138,70,0.16)"
+
+###############################################################################
+# SELECTION
+###############################################################################
+
+  mdc-list-item-selected-text-color:      "var(--sg-brass)"
+  mdc-list-item-hover-state-layer-color:  "rgba(181,138,70,0.08)"
+
+###############################################################################
+# TABS
+###############################################################################
+
+  mdc-tab-text-label-color-default:       "var(--sg-text-secondary)"
+  mdc-tab-text-label-color-active:        "var(--sg-brass)"
+
+  mdc-tab-indicator-active-indicator-color: "var(--sg-brass)"
+
+###############################################################################
+# BADGES
+###############################################################################
+
+  label-badge-background-color:           "rgba(24,27,29,0.90)"
+  label-badge-text-color:                 "var(--sg-text-primary)"
+  label-badge-red:                        "var(--sg-danger)"
+  label-badge-blue:                       "var(--sg-water)"
+  label-badge-green:                      "var(--sg-success)"
+  label-badge-yellow:                     "var(--sg-warning)"
+
+###############################################################################
+# PROGRESS
+###############################################################################
+
+  paper-progress-active-color:            "var(--sg-brass)"
+  paper-progress-secondary-color:         "rgba(181,138,70,0.25)"
+
+###############################################################################
+# TOOLTIPS
+###############################################################################
+
+  material-tooltip-background-color:      "rgba(24,27,29,0.96)"
+  material-tooltip-text-color:            "var(--sg-text-primary)"
+
+################################################################################
+#
+# MILESTONE 1 — PART 4
+#
+# POLISH & EDGE CASES
+#
+# This section removes the remaining Home Assistant identity from
+# less frequently used screens.
+#
+################################################################################
+
+###############################################################################
+# MORE INFO DIALOGS
+###############################################################################
+
+  more-info-header-background:        "rgba(24,27,29,0.94)"
+  more-info-card-background:          "rgba(24,27,29,0.88)"
+
+###############################################################################
+# POPUPS
+###############################################################################
+
+  popup-background-color:             "rgba(24,27,29,0.95)"
+  popup-text-color:                   "var(--sg-text-primary)"
+
+###############################################################################
+# TABLES
+###############################################################################
+
+  table-row-background-color:         "transparent"
+  table-row-alternative-background-color: "rgba(255,255,255,0.02)"
+
+###############################################################################
+# HISTORY
+###############################################################################
+
+  history-line-color:                 "var(--sg-brass)"
+
+###############################################################################
+# GRAPHS
+###############################################################################
+
+  graph-color-1:                      "var(--sg-brass)"
+  graph-color-2:                      "var(--sg-water)"
+  graph-color-3:                      "var(--sg-success)"
+  graph-color-4:                      "var(--sg-warning)"
+  graph-color-5:                      "var(--sg-danger)"
+
+###############################################################################
+# CODE BLOCKS
+###############################################################################
+
+  code-editor-background-color:       "rgba(15,17,19,0.95)"
+  code-editor-gutter-color:           "rgba(24,27,29,0.95)"
+
+###############################################################################
+# SEARCH
+###############################################################################
+
+  search-bar-background-color:        "rgba(24,27,29,0.88)"
+
+###############################################################################
+# BADGES
+###############################################################################
+
+  badge-background-color:             "rgba(24,27,29,0.92)"
+  badge-text-color:                   "var(--sg-text-primary)"
+
+###############################################################################
+# FAB (Floating Action Button)
+###############################################################################
+
+  mdc-fab-container-color:            "var(--sg-brass)"
+  mdc-fab-icon-color:                 "var(--sg-hull)"
+
+###############################################################################
+# SNACKBARS / TOASTS
+###############################################################################
+
+  mdc-snackbar-container-color:       "rgba(24,27,29,0.96)"
+  mdc-snackbar-supporting-text-color: "var(--sg-text-primary)"
+
+###############################################################################
+# CALENDAR
+###############################################################################
+
+  calendar-background-color:          "rgba(24,27,29,0.88)"
+
+###############################################################################
+# MAPS
+###############################################################################
+
+  map-card-background-color:          "rgba(24,27,29,0.82)"
+
+###############################################################################
+# ENERGY
+###############################################################################
+
+  energy-grid-consumption-color:      "var(--sg-brass)"
+  energy-grid-return-color:           "var(--sg-water)"
+  energy-solar-color:                 "var(--sg-warning)"
+  energy-battery-color:               "var(--sg-success)"
+
+###############################################################################
+# MARKDOWN
+###############################################################################
+
+  markdown-code-background-color:     "rgba(15,17,19,0.90)"
+  markdown-table-row-background-color: "transparent"
+
+###############################################################################
+# NOTIFICATIONS
+###############################################################################
+
+  notification-background-color:      "rgba(24,27,29,0.94)"
+  notification-color:                 "var(--sg-text-primary)"
+
+###############################################################################
+# TILE CARDS
+###############################################################################
+
+  tile-background-color:              "rgba(24,27,29,0.84)"
+
+###############################################################################
+# FOCUS RING
+###############################################################################
+
+  focus-ring-color:                   "rgba(181,138,70,0.55)"
+
+###############################################################################
+# SELECTION
+###############################################################################
+
+  text-selection-color:               "rgba(181,138,70,0.25)"
+
+###############################################################################
+# FALLBACKS
+#
+# Older cards and custom integrations often still use these variables.
+###############################################################################
+
+  paper-item-icon-color:              "var(--sg-text-muted)"
+  paper-item-icon-active-color:       "var(--sg-brass)"
+
+  paper-grey-50:                      "var(--sg-glass-100)"
+  paper-grey-200:                     "var(--sg-glass-300)"
+
+  paper-dialog-background-color:      "rgba(24,27,29,0.94)"
+  paper-card-background-color:        "rgba(24,27,29,0.84)"
+
+  paper-toggle-button-checked-button-color: "var(--sg-brass)"
+  paper-toggle-button-checked-bar-color:    "rgba(181,138,70,0.45)"
+
+################################################################################
+#
+# END OF MILESTONE 1
+#
+################################################################################
