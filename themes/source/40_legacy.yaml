@@ -1,6 +1,62 @@
-###############################################################################
-# Smoked Glass 2.0
-# Legacy compatibility
+################################################################################
 #
-# Backwards compatibility for deprecated or historical variables.
-###############################################################################
+# SMOKED GLASS
+# Legacy Compatibility Layer
+#
+# ------------------------------------------------------------------------------
+#
+# Compatibility variables for older Home Assistant frontend components.
+#
+# This layer exists to preserve compatibility only.
+# New development should use Home Assistant or Material Design variables
+# instead of adding new entries here.
+#
+################################################################################
+
+
+  ##########################################################################
+  # Paper Icons
+  ##########################################################################
+
+  paper-item-icon-color:                     "var(--state-icon-color)"
+  paper-item-icon-active-color:              "var(--state-icon-active-color)"
+
+  ##########################################################################
+  # Paper Backgrounds
+  ##########################################################################
+
+  paper-card-background-color:               "var(--card-background-color)"
+  paper-dialog-background-color:             "var(--dialog-background-color)"
+
+  ##########################################################################
+  # Paper Slider
+  ##########################################################################
+
+  paper-slider-active-color:                 "var(--primary-color)"
+  paper-slider-secondary-color:              "var(--primary-color)"
+  paper-slider-knob-color:                   "var(--primary-color)"
+  paper-slider-pin-color:                    "var(--primary-color)"
+
+  ##########################################################################
+  # Paper Toggle
+  ##########################################################################
+
+  paper-toggle-button-checked-bar-color:     "var(--sg-switch-track-active)"
+  paper-toggle-button-checked-button-color:  "var(--primary-color)"
+
+  paper-toggle-button-unchecked-bar-color:   "var(--sg-switch-track)"
+  paper-toggle-button-unchecked-button-color: "var(--sg-glass-handle)"
+
+  ##########################################################################
+  # Paper Progress
+  ##########################################################################
+
+  paper-progress-active-color:               "var(--primary-color)"
+  paper-progress-secondary-color:            "var(--sg-switch-track)"
+
+  ##########################################################################
+  # Paper Greys
+  ##########################################################################
+
+  paper-grey-50:                             "#fafafa"
+  paper-grey-200:                            "#eeeeee"

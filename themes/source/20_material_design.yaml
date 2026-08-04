@@ -1,6 +1,156 @@
-###############################################################################
-# Smoked Glass 2.0
-# Material Design compatibility
+################################################################################
 #
-# Compatibility layer for Material Design theme variables.
-###############################################################################
+# SMOKED GLASS
+# Material Design Mapping Layer
+#
+################################################################################
+
+
+  ##########################################################################
+  # Text fields
+  ##########################################################################
+
+  mdc-text-field-fill-color:                  "var(--sg-glass-light)"
+  mdc-text-field-idle-line-color:             "var(--sg-form-line)"
+  mdc-text-field-hover-line-color:            "var(--sg-brass)"
+  mdc-text-field-label-ink-color:             "var(--sg-text-secondary)"
+
+  ##########################################################################
+  # Selects
+  ##########################################################################
+
+  mdc-select-fill-color:                      "var(--sg-glass-light)"
+  mdc-select-idle-line-color:                 "var(--sg-form-line)"
+  mdc-select-hover-line-color:                "var(--sg-brass)"
+  mdc-select-label-ink-color:                 "var(--sg-text-secondary)"
+
+  ##########################################################################
+  # Theme
+  ##########################################################################
+
+  md-sys-color-primary:                       "var(--sg-brass)"
+
+  mdc-theme-primary:                          "var(--sg-brass)"
+  mdc-theme-secondary:                        "var(--sg-brass)"
+  mdc-theme-on-primary:                       "var(--sg-text-primary)"
+  mdc-theme-on-secondary:                     "var(--sg-text-primary)"
+
+  ##########################################################################
+  # Menus
+  ##########################################################################
+
+  material-menu-background-color:             "var(--sg-glass-light)"
+  material-menu-color:                        "var(--sg-text-primary)"
+
+  ##########################################################################
+  # Dialogs
+  ##########################################################################
+
+  dialog-background-color:                    "var(--sg-popup-background)"
+  mdc-dialog-container-color:                 "var(--sg-popup-background)"
+  mdc-dialog-heading-ink-color:               "var(--sg-text-primary)"
+  mdc-dialog-supporting-text-color:           "var(--sg-text-secondary)"
+
+  ##########################################################################
+  # Lists
+  ##########################################################################
+
+  material-list-item-selected-color:          "var(--sg-brass)"
+  material-list-item-hover-color:             "var(--sg-list-item-hover-color)"
+
+  mdc-list-item-selected-text-color:          "var(--sg-brass)"
+  mdc-list-item-hover-state-layer-color:      "var(--sg-state-layer-resting)"
+
+  ##########################################################################
+  # Switches
+  ##########################################################################
+
+  mdc-switch-selected-track-color:            "var(--sg-switch-track-active)"
+  mdc-switch-selected-handle-color:           "var(--sg-brass)"
+  mdc-switch-unselected-track-color:          "var(--sg-switch-track)"
+  mdc-switch-unselected-handle-color:         "var(--sg-glass-handle)"
+
+  ##########################################################################
+  # Checkboxes
+  ##########################################################################
+
+  mdc-checkbox-unchecked-color:               "var(--sg-text-muted)"
+  mdc-checkbox-disabled-color:                "var(--sg-selection-control-disabled)"
+  mdc-checkbox-ink-color:                     "var(--sg-brass)"
+
+  ##########################################################################
+  # Radio buttons
+  ##########################################################################
+
+  mdc-radio-unchecked-color:                  "var(--sg-text-muted)"
+  mdc-radio-disabled-color:                   "var(--sg-selection-control-disabled)"
+  mdc-radio-checked-color:                    "var(--sg-brass)"
+
+  ##########################################################################
+  # Sliders
+  ##########################################################################
+
+  mdc-slider-handle-color:                    "var(--sg-brass)"
+  mdc-slider-focus-handle-color:              "var(--sg-brass-hover)"
+  mdc-slider-hover-handle-color:              "var(--sg-brass-hover)"
+  mdc-slider-active-track-color:              "var(--sg-brass)"
+  mdc-slider-inactive-track-color:            "var(--sg-slider-inactive-track)"
+
+  ##########################################################################
+  # Chips
+  ##########################################################################
+
+  mdc-chip-label-text-color:                  "var(--sg-text-primary)"
+  mdc-chip-container-color:                   "var(--sg-glass-light)"
+  mdc-chip-selected-container-color:          "var(--sg-chip-selected)"
+
+  ##########################################################################
+  # Buttons
+  ##########################################################################
+
+  mdc-filled-button-container-color:          "var(--sg-brass)"
+  mdc-filled-button-label-text-color:         "var(--sg-carbon)"
+
+  mdc-outlined-button-label-text-color:       "var(--sg-brass)"
+  mdc-outlined-button-outline-color:          "var(--sg-button-outline)"
+
+  ##########################################################################
+  # Tabs
+  ##########################################################################
+
+  mdc-tab-text-label-color-default:           "var(--sg-text-secondary)"
+  mdc-tab-text-label-color-active:            "var(--sg-brass)"
+  mdc-tab-indicator-active-indicator-color:   "var(--sg-brass)"
+
+  ##########################################################################
+  # FAB
+  ##########################################################################
+
+  mdc-fab-container-color:                    "var(--sg-brass)"
+  mdc-fab-icon-color:                         "var(--sg-carbon)"
+
+  ##########################################################################
+  # Snackbar
+  ##########################################################################
+
+  mdc-snackbar-container-color:               "var(--sg-glass-light)"
+  mdc-snackbar-supporting-text-color:         "var(--sg-text-primary)"
+
+  ##########################################################################
+  # Search
+  ##########################################################################
+
+  search-bar-background-color:                "var(--sg-glass-light)"
+
+  ##########################################################################
+  # Tooltips
+  ##########################################################################
+
+  material-tooltip-background-color:          "var(--sg-glass-light)"
+  material-tooltip-text-color:                "var(--sg-text-primary)"
+
+  ##########################################################################
+  # Effects
+  ##########################################################################
+
+  mdc-ripple-color:                           "var(--sg-ripple)"

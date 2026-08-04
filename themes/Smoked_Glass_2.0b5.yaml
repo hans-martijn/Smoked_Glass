@@ -1,0 +1,746 @@
+Smoked Glass 2.0b5:
+
+###############################################################################
+# Smoked Glass
+# Design Tokens
+#
+# Source of truth for all Smoked Glass design variables.
+#
+# These tokens define the Smoked Glass design language. They should never
+# depend on Home Assistant, Material Design or any other implementation layer.
+#
+#
+# IMPORTANT!
+#
+# This file defines the Smoked Glass design language.
+#
+# Only semantic design tokens may be defined here.
+# Home Assistant, Material Design, Web Awesome and Legacy mappings must never
+# introduce visual values directly.
+###############################################################################
+
+
+  ###########################################################################
+  # Carbon
+  ###########################################################################
+
+  sg-carbon:                 "#0F1113"
+
+  ###########################################################################
+  # Glass
+  ###########################################################################
+
+  # Base glass colours
+  sg-glass-background:       "#181B1D"
+  sg-glass-surface:          "#202427"
+  sg-glass-handle:           "#2A2F33"
+
+  # Glass backgrounds
+  sg-glass-light:            "rgba(24,27,29,0.75)"
+  sg-glass-default:          "rgba(24,27,29,0.88)"
+
+  # Floating UI
+  sg-popup-background:       "rgba(24,27,29,0.96)"
+
+  ###############################################################################
+  # Navigation
+  ###############################################################################
+
+  sg-sidebar-background:        "rgba(15,17,19,0.92)"
+  sg-sidebar-selected:          "rgba(32,36,39,0.70)"
+
+  ###########################################################################
+  # Brass
+  ###########################################################################
+
+  sg-aged-brass:            "#906E38"
+  sg-brass:                 "#B58A46"
+  sg-brass-hover:           "#C19652"
+  sg-brass-active:          "#D0A762"
+
+  ###########################################################################
+  # Text
+  ###########################################################################
+
+  sg-text-primary:          "#F0ECE6"
+  sg-text-secondary:        "#D8D1C8"
+  sg-text-muted:            "#9F9A93"
+  sg-text-disabled:         "#6B6762"
+
+  ###########################################################################
+  # Status
+  ###########################################################################
+
+  sg-success:               "#4F875F"
+  sg-warning:               "#C78D38"
+  sg-danger:                "#A5484A"
+  sg-info:                  "#4E7DA5"
+  sg-focus:                 "rgba(181,138,70,0.35)"
+
+  ###############################################################################
+  # Forms
+  ###############################################################################
+
+  sg-form-background:          "var(--sg-glass-default)"
+  sg-form-background-disabled: "rgba(24,27,29,0.50)"
+
+  sg-form-line:                "rgba(255,255,255,0.10)"
+  sg-form-line-hover:          "var(--sg-brass)"
+
+  sg-form-icon:                "var(--sg-brass)"
+
+  ###########################################################################
+  # Borders
+  ###########################################################################
+
+  sg-border-soft:           "rgba(255,255,255,0.04)"
+  sg-border-medium:         "rgba(255,255,255,0.08)"
+  sg-border-strong:         "rgba(255,255,255,0.12)"
+
+  ###############################################################################
+  # Dividers
+  ###############################################################################
+
+  sg-divider:              "rgba(255,255,255,0.05)"
+
+  ###############################################################################
+  # Shadows
+  ###############################################################################
+
+  sg-shadow-soft:           "0 4px 12px rgba(0,0,0,0.18)"
+  sg-shadow-medium:         "0 8px 18px rgba(0,0,0,0.25)"
+  sg-shadow-floating:       "0 12px 32px rgba(0,0,0,0.30)"
+
+  ###############################################################################
+  # Tooltips
+  ###############################################################################
+
+  sg-tooltip-background: "var(--sg-popup-background)"
+
+  ###############################################################################
+  # Sliders
+  ###############################################################################
+
+  sg-slider-track:           "rgba(255,255,255,0.14)"
+
+  ###############################################################################
+  # Switches
+  ###############################################################################
+
+  sg-switch-track:          "rgba(255,255,255,0.12)"
+  sg-switch-track-active:   "rgba(181,138,70,0.45)"
+
+  ###############################################################################
+  # State Layers
+  ###############################################################################
+
+  sg-state-layer-resting:    "rgba(181,138,70,0.08)"
+  sg-state-layer-hover:      "rgba(181,138,70,0.12)"
+
+  ###############################################################################
+  # Lists
+  ###############################################################################
+
+  sg-list-item-hover: "rgba(181,138,70,0.10)"
+
+  ###############################################################################
+  # Tables
+  ###############################################################################
+
+  sg-table-row-alternate: "rgba(255,255,255,0.02)"
+
+  ###############################################################################
+  # Scrollbars
+  ###############################################################################
+
+  sg-scrollbar-thumb: "rgba(255,255,255,0.20)"
+
+  ###############################################################################
+  # Text Selection
+  ###############################################################################
+
+  sg-text-selection:       "rgba(181,138,70,0.25)"
+
+  ###############################################################################
+  # Ripples
+  ###############################################################################
+
+  sg-ripple: "rgba(181,138,70,0.16)"
+
+  ###############################################################################
+  # Selection Controls
+  ###############################################################################
+
+  sg-selection-control-disabled: "rgba(255,255,255,0.20)"
+
+  ###############################################################################
+  # Chips
+  ###############################################################################
+
+  sg-chip-selected: "rgba(181,138,70,0.20)"
+
+  ###############################################################################
+  # Buttons
+  ###############################################################################
+
+  sg-button-outline: "rgba(181,138,70,0.40)"
+
+  ###############################################################################
+  # Cards
+  ###############################################################################
+
+  sg-card-radius: "14px"
+  sg-card-border-width: "1px"
+
+################################################################################
+#
+# SMOKED GLASS
+# Home Assistant Mapping Layer
+#
+# ------------------------------------------------------------------------------
+#
+# This layer maps the Smoked Glass design language onto Home Assistant theme
+# variables.
+#
+# No visual values may be introduced here. Every value must reference a design
+# token from 00_design_tokens.yaml.
+#
+################################################################################
+
+
+################################################################################
+#
+# TYPOGRAPHY
+#
+################################################################################
+
+  primary-text-color:       "var(--sg-text-primary)"
+  text-primary-color:       "var(--sg-text-primary)"
+
+  secondary-text-color:     "var(--sg-text-secondary)"
+
+  disabled-text-color:      "var(--sg-text-disabled)"
+
+################################################################################
+#
+# BACKGROUNDS
+#
+################################################################################
+
+  primary-background-color:     "var(--sg-glass-background)"
+  secondary-background-color:   "var(--sg-glass-surface)"
+
+  lovelace-background:          "var(--sg-carbon)"
+
+  app-header-background-color:  "var(--sg-glass-light)"
+
+################################################################################
+#
+# CARDS
+#
+################################################################################
+
+  card-background-color:        "var(--sg-glass-light)"
+  ha-card-background:           "var(--sg-glass-light)"
+
+  ha-card-border-radius:        "var(--sg-card-radius)"
+
+  ha-card-border-width:         "var(--sg-card-border-width)"
+
+  ha-card-border-color:         "var(--sg-border-soft)"
+
+  ha-card-box-shadow:           "var(--sg-shadow-soft)"
+
+################################################################################
+#
+# DIVIDERS
+#
+################################################################################
+
+  divider-color:                "var(--sg-divider)"
+
+################################################################################
+#
+# ICONS
+#
+################################################################################
+
+  state-icon-color:             "var(--sg-text-muted)"
+
+  state-icon-active-color:      "var(--sg-brass)"
+
+################################################################################
+#
+# SIDEBAR
+#
+################################################################################
+
+  sidebar-background-color:     "var(--sg-sidebar-background)"
+
+  sidebar-icon-color:           "var(--sg-text-muted)"
+
+  sidebar-text-color:           "var(--sg-text-secondary)"
+
+  sidebar-selected-icon-color:  "var(--sg-brass)"
+
+  sidebar-selected-text-color:  "var(--sg-text-primary)"
+
+  sidebar-selected-background-color: "var(--sg-sidebar-selected)"
+
+################################################################################
+#
+# LINKS
+#
+################################################################################
+
+  primary-color:                "var(--sg-brass)"
+
+  accent-color:                 "var(--sg-brass)"
+
+################################################################################
+#
+# STATUS COLOURS
+#
+################################################################################
+
+  success-color:                "var(--sg-success)"
+
+  warning-color:                "var(--sg-warning)"
+
+  error-color:                  "var(--sg-danger)"
+
+  info-color:                   "var(--sg-info)"
+
+################################################################################
+#
+# FORMS
+#
+################################################################################
+
+  ##########################################################################
+  # Legacy HA form colours
+  ##########################################################################
+
+  ha-color-form-background:              "var(--sg-form-background)"
+  ha-color-form-background-hover:        "var(--sg-form-background)"
+  ha-color-form-background-disabled:     "var(--sg-form-background-disabled)"
+
+  ha-color-form-ink-color:               "var(--sg-text-primary)"
+
+  ##########################################################################
+  # Text fields
+  ##########################################################################
+
+  ha-textfield-fill-color:               "var(--sg-form-background)"
+  ha-textfield-ink-color:                "var(--sg-text-primary)"
+
+  input-fill-color:                      "var(--sg-glass-default)"
+  input-disabled-fill-color:             "var(--sg-form-background-disabled)"
+
+  input-ink-color:                       "var(--sg-text-primary)"
+  input-label-ink-color:                 "var(--sg-text-secondary)"
+
+  input-disabled-ink-color:              "var(--sg-text-disabled)"
+
+  input-idle-line-color:                 "var(--sg-form-line)"
+  input-hover-line-color:                "var(--sg-form-line-hover)"
+
+  input-dropdown-icon-color:             "var(--sg-form-icon)"
+
+################################################################################
+#
+# HOME ASSISTANT UI
+#
+################################################################################
+
+  ##########################################################################
+  # HA Colours
+  ##########################################################################
+
+  ha-color-primary:                      "var(--sg-brass)"
+  ha-color-primary-40:                   "var(--sg-brass)"
+  ha-color-primary-50:                   "var(--sg-brass)"
+  ha-color-primary-60:                   "var(--sg-brass)"
+
+  ha-color-focus:                        "var(--sg-focus)"
+  ha-color-fill-primary-quiet-resting:   "var(--sg-state-layer-resting)"
+  ha-color-fill-primary-quiet-hover:     "var(--sg-state-layer-hover)"
+  ha-color-text-link:                    "var(--primary-color)"
+
+  ##########################################################################
+  # Radio Buttons
+  ##########################################################################
+
+  ha-radio-option-active-color:          "var(--primary-color)"
+  ha-radio-option-checked-background-color: "var(--primary-color)"
+
+  ##########################################################################
+  # Switches
+  ##########################################################################
+
+  ha-switch-background-color:            "var(--sg-switch-track)"
+  ha-switch-thumb-background-color:      "var(--sg-glass-handle)"
+
+  ha-switch-checked-background-color:    "var(--sg-switch-track-active)"
+  ha-switch-checked-track-color:         "var(--sg-switch-track-active)"
+  ha-switch-checked-thumb-background-color: "var(--primary-color)"
+  ha-switch-checked-button-color:        "var(--primary-color)"
+
+  switch-unchecked-track-color:          "var(--sg-switch-track)"
+  switch-unchecked-button-color:         "var(--sg-glass-handle)"
+  switch-checked-track-color:            "var(--sg-switch-track-active)"
+  switch-checked-button-color:           "var(--primary-color)"
+
+  ##########################################################################
+  # Tooltips
+  ##########################################################################
+
+  ha-tooltip-background-color:           "var(--sg-tooltip-background)"
+  ha-tooltip-text-color:                 "var(--sg-text-primary)"
+
+################################################################################
+#
+# DASHBOARD
+#
+################################################################################
+
+  badge-background-color:                "var(--card-background-color)"
+  badge-text-color:                      "var(--primary-text-color)"
+
+  calendar-background-color:             "var(--card-background-color)"
+
+  notification-background-color:         "var(--card-background-color)"
+  notification-color:                    "var(--primary-text-color)"
+
+  popup-background-color:                "var(--card-background-color)"
+  popup-text-color:                      "var(--primary-text-color)"
+
+  tile-background-color:                 "var(--card-background-color)"
+
+  more-info-card-background:             "var(--card-background-color)"
+  more-info-header-background:           "var(--card-background-color)"
+
+################################################################################
+#
+# LINKS
+#
+################################################################################
+
+  link-color:                            "var(--primary-color)"
+  markdown-link-color:                   "var(--primary-color)"
+
+################################################################################
+#
+# LABELS
+#
+################################################################################
+
+  label-badge-background-color:          "var(--card-background-color)"
+  label-badge-text-color:                "var(--primary-text-color)"
+
+  label-badge-red:                       "var(--sg-danger)"
+  label-badge-blue:                      "var(--sg-info)"
+  label-badge-green:                     "var(--sg-success)"
+  label-badge-yellow:                    "var(--sg-warning)"
+
+################################################################################
+#
+# TABLES & EDITORS
+#
+################################################################################
+
+  table-row-background-color:            "transparent"
+  table-row-alternative-background-color: "var(--sg-table-row-alternate)"
+
+  markdown-code-background-color:        "var(--sg-glass-default)"
+  markdown-table-row-background-color:   "transparent"
+
+  code-editor-background-color:          "var(--sg-glass-default)"
+  code-editor-gutter-color:              "var(--primary-background-color)"
+
+################################################################################
+#
+# MAPS & HISTORY
+#
+################################################################################
+
+  map-card-background-color:             "var(--card-background-color)"
+  history-line-color:                    "var(--primary-color)"
+
+################################################################################
+#
+# ENERGY
+#
+################################################################################
+
+  energy-grid-consumption-color:         "var(--sg-danger)"
+  energy-grid-return-color:              "var(--sg-info)"
+  energy-solar-color:                    "var(--sg-warning)"
+  energy-battery-color:                  "var(--sg-success)"
+
+################################################################################
+#
+# GRAPHS
+#
+################################################################################
+
+  graph-color-1:                         "var(--sg-brass)"
+  graph-color-2:                         "var(--sg-info)"
+  graph-color-3:                         "var(--sg-success)"
+  graph-color-4:                         "var(--sg-warning)"
+  graph-color-5:                         "var(--sg-danger)"
+
+################################################################################
+#
+# SCROLLBARS
+#
+################################################################################
+
+  scrollbar-thumb-color:                 "var(--sg-scrollbar-thumb)"
+  scrollbar-track-color:                 "transparent"
+
+################################################################################
+#
+# SELECTION
+#
+################################################################################
+
+  text-selection-color:                  "var(--sg-text-selection)"
+
+################################################################################
+#
+# MISC
+#
+################################################################################
+
+  focus-ring-color:                      "var(--sg-focus)"
+  light-primary-color:                   "var(--sg-aged-brass)"
+
+################################################################################
+#
+# SMOKED GLASS
+# Material Design Mapping Layer
+#
+################################################################################
+
+
+  ##########################################################################
+  # Text fields
+  ##########################################################################
+
+  mdc-text-field-fill-color:                  "var(--sg-glass-light)"
+  mdc-text-field-idle-line-color:             "var(--sg-form-line)"
+  mdc-text-field-hover-line-color:            "var(--sg-brass)"
+  mdc-text-field-label-ink-color:             "var(--sg-text-secondary)"
+
+  ##########################################################################
+  # Selects
+  ##########################################################################
+
+  mdc-select-fill-color:                      "var(--sg-glass-light)"
+  mdc-select-idle-line-color:                 "var(--sg-form-line)"
+  mdc-select-hover-line-color:                "var(--sg-brass)"
+  mdc-select-label-ink-color:                 "var(--sg-text-secondary)"
+
+  ##########################################################################
+  # Theme
+  ##########################################################################
+
+  md-sys-color-primary:                       "var(--sg-brass)"
+
+  mdc-theme-primary:                          "var(--sg-brass)"
+  mdc-theme-secondary:                        "var(--sg-brass)"
+  mdc-theme-on-primary:                       "var(--sg-text-primary)"
+  mdc-theme-on-secondary:                     "var(--sg-text-primary)"
+
+  ##########################################################################
+  # Menus
+  ##########################################################################
+
+  material-menu-background-color:             "var(--sg-glass-light)"
+  material-menu-color:                        "var(--sg-text-primary)"
+
+  ##########################################################################
+  # Dialogs
+  ##########################################################################
+
+  dialog-background-color:                    "var(--sg-popup-background)"
+  mdc-dialog-container-color:                 "var(--sg-popup-background)"
+  mdc-dialog-heading-ink-color:               "var(--sg-text-primary)"
+  mdc-dialog-supporting-text-color:           "var(--sg-text-secondary)"
+
+  ##########################################################################
+  # Lists
+  ##########################################################################
+
+  material-list-item-selected-color:          "var(--sg-brass)"
+  material-list-item-hover-color:             "var(--sg-list-item-hover-color)"
+
+  mdc-list-item-selected-text-color:          "var(--sg-brass)"
+  mdc-list-item-hover-state-layer-color:      "var(--sg-state-layer-resting)"
+
+  ##########################################################################
+  # Switches
+  ##########################################################################
+
+  mdc-switch-selected-track-color:            "var(--sg-switch-track-active)"
+  mdc-switch-selected-handle-color:           "var(--sg-brass)"
+  mdc-switch-unselected-track-color:          "var(--sg-switch-track)"
+  mdc-switch-unselected-handle-color:         "var(--sg-glass-handle)"
+
+  ##########################################################################
+  # Checkboxes
+  ##########################################################################
+
+  mdc-checkbox-unchecked-color:               "var(--sg-text-muted)"
+  mdc-checkbox-disabled-color:                "var(--sg-selection-control-disabled)"
+  mdc-checkbox-ink-color:                     "var(--sg-brass)"
+
+  ##########################################################################
+  # Radio buttons
+  ##########################################################################
+
+  mdc-radio-unchecked-color:                  "var(--sg-text-muted)"
+  mdc-radio-disabled-color:                   "var(--sg-selection-control-disabled)"
+  mdc-radio-checked-color:                    "var(--sg-brass)"
+
+  ##########################################################################
+  # Sliders
+  ##########################################################################
+
+  mdc-slider-handle-color:                    "var(--sg-brass)"
+  mdc-slider-focus-handle-color:              "var(--sg-brass-hover)"
+  mdc-slider-hover-handle-color:              "var(--sg-brass-hover)"
+  mdc-slider-active-track-color:              "var(--sg-brass)"
+  mdc-slider-inactive-track-color:            "var(--sg-slider-inactive-track)"
+
+  ##########################################################################
+  # Chips
+  ##########################################################################
+
+  mdc-chip-label-text-color:                  "var(--sg-text-primary)"
+  mdc-chip-container-color:                   "var(--sg-glass-light)"
+  mdc-chip-selected-container-color:          "var(--sg-chip-selected)"
+
+  ##########################################################################
+  # Buttons
+  ##########################################################################
+
+  mdc-filled-button-container-color:          "var(--sg-brass)"
+  mdc-filled-button-label-text-color:         "var(--sg-carbon)"
+
+  mdc-outlined-button-label-text-color:       "var(--sg-brass)"
+  mdc-outlined-button-outline-color:          "var(--sg-button-outline)"
+
+  ##########################################################################
+  # Tabs
+  ##########################################################################
+
+  mdc-tab-text-label-color-default:           "var(--sg-text-secondary)"
+  mdc-tab-text-label-color-active:            "var(--sg-brass)"
+  mdc-tab-indicator-active-indicator-color:   "var(--sg-brass)"
+
+  ##########################################################################
+  # FAB
+  ##########################################################################
+
+  mdc-fab-container-color:                    "var(--sg-brass)"
+  mdc-fab-icon-color:                         "var(--sg-carbon)"
+
+  ##########################################################################
+  # Snackbar
+  ##########################################################################
+
+  mdc-snackbar-container-color:               "var(--sg-glass-light)"
+  mdc-snackbar-supporting-text-color:         "var(--sg-text-primary)"
+
+  ##########################################################################
+  # Search
+  ##########################################################################
+
+  search-bar-background-color:                "var(--sg-glass-light)"
+
+  ##########################################################################
+  # Tooltips
+  ##########################################################################
+
+  material-tooltip-background-color:          "var(--sg-glass-light)"
+  material-tooltip-text-color:                "var(--sg-text-primary)"
+
+  ##########################################################################
+  # Effects
+  ##########################################################################
+
+  mdc-ripple-color:                           "var(--sg-ripple)"
+
+################################################################################
+#
+# SMOKED GLASS
+# Web Awesome Mapping Layer
+#
+################################################################################
+
+
+################################################################################
+#
+# SMOKED GLASS
+# Legacy Compatibility Layer
+#
+# ------------------------------------------------------------------------------
+#
+# Compatibility variables for older Home Assistant frontend components.
+#
+# This layer exists to preserve compatibility only.
+# New development should use Home Assistant or Material Design variables
+# instead of adding new entries here.
+#
+################################################################################
+
+
+  ##########################################################################
+  # Paper Icons
+  ##########################################################################
+
+  paper-item-icon-color:                     "var(--state-icon-color)"
+  paper-item-icon-active-color:              "var(--state-icon-active-color)"
+
+  ##########################################################################
+  # Paper Backgrounds
+  ##########################################################################
+
+  paper-card-background-color:               "var(--card-background-color)"
+  paper-dialog-background-color:             "var(--dialog-background-color)"
+
+  ##########################################################################
+  # Paper Slider
+  ##########################################################################
+
+  paper-slider-active-color:                 "var(--primary-color)"
+  paper-slider-secondary-color:              "var(--primary-color)"
+  paper-slider-knob-color:                   "var(--primary-color)"
+  paper-slider-pin-color:                    "var(--primary-color)"
+
+  ##########################################################################
+  # Paper Toggle
+  ##########################################################################
+
+  paper-toggle-button-checked-bar-color:     "var(--sg-switch-track-active)"
+  paper-toggle-button-checked-button-color:  "var(--primary-color)"
+
+  paper-toggle-button-unchecked-bar-color:   "var(--sg-switch-track)"
+  paper-toggle-button-unchecked-button-color: "var(--sg-glass-handle)"
+
+  ##########################################################################
+  # Paper Progress
+  ##########################################################################
+
+  paper-progress-active-color:               "var(--primary-color)"
+  paper-progress-secondary-color:            "var(--sg-switch-track)"
+
+  ##########################################################################
+  # Paper Greys
+  ##########################################################################
+
+  paper-grey-50:                             "#fafafa"
+  paper-grey-200:                            "#eeeeee"
+
