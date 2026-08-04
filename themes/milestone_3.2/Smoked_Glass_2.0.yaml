@@ -47,6 +47,7 @@ Smoked Glass 2.0:
   # Marine Brass
   ##########################################################################
 
+  sg-old-brass:             "#906E38"
   sg-brass:                 "#B58A46"
   sg-brass-hover:           "#C19652"
   sg-brass-active:          "#D0A762"
@@ -320,7 +321,7 @@ Smoked Glass 2.0:
   ha-color-fill-primary-quiet-hover: "var(--sg-glass-300)"
   ha-color-fill-primary-quiet-resting: "var(--sg-glass-300)"
 
-  light-primary-color: "var(--sg-brass)"
+  light-primary-color: "var(--sg-old-brass)"
 
   ##########################################################################
   # Material Design
