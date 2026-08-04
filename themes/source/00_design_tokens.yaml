@@ -1,0 +1,8 @@
+###############################################################################
+# Smoked Glass 2.0
+# Design Tokens
+#
+# Source of truth for all Smoked Glass design variables.
+# These variables define the visual identity of the theme and should never
+# reference Home Assistant implementation variables.
+###############################################################################
