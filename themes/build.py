@@ -2,14 +2,26 @@
 """
 Smoked Glass Theme Builder
 
-Builds a Home Assistant theme by concatenating all YAML source files in the
-source/ directory in alphabetical order.
+Builds one Home Assistant theme for every design variant.
 
-Usage:
-    python build.py
-    python build.py Smoked_Glass
-    python build.py Smoked_Glass_Day
-    python build.py Smoked_Glass_Night
+Structure:
+
+source/
+├── variants/
+│   ├── Day.yaml
+│   ├── Night.yaml
+│   └── OLED.yaml
+│
+├── 10_home_assistant.yaml
+├── 20_material_design.yaml
+├── 30_web_awesome.yaml
+└── 40_legacy.yaml
+
+generated/
+    Smoked_Glass_Day.yaml
+    Smoked_Glass_Night.yaml
+    ...
+
 """
 
 from pathlib import Path
@@ -18,57 +30,121 @@ import sys
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 SOURCE_DIR = SCRIPT_DIR / "source"
+VARIANT_DIR = SOURCE_DIR / "variants"
+OUTPUT_DIR = SCRIPT_DIR / "generated"
 
 
-def build_theme_name(filename: str) -> str:
-    """Convert a filename into a Home Assistant theme name."""
+# ---------------------------------------------------------------------
+# Discovery
+# ---------------------------------------------------------------------
 
-    if filename.endswith(".yaml"):
-        filename = filename[:-5]
+def discover_variants():
+    """Return all available design variants."""
 
-    return filename.replace("_", " ")
+    if not VARIANT_DIR.exists():
+        print("ERROR")
+        print(f"Missing directory: {VARIANT_DIR}")
+        sys.exit(1)
+
+    variants = sorted(VARIANT_DIR.glob("*.yaml"))
+
+    if not variants:
+        print("ERROR")
+        print("No variants found.")
+        sys.exit(1)
+
+    return variants
 
 
-def output_filename() -> str:
-    """Determine the output filename."""
+def discover_layers():
+    """Return all numbered implementation layers."""
 
-    if len(sys.argv) > 1:
-        name = sys.argv[1]
-        if not name.endswith(".yaml"):
-            name += ".yaml"
-        return name
+    layers = sorted(
+        f
+        for f in SOURCE_DIR.glob("*.yaml")
+        if f.is_file()
+    )
 
-    return "Smoked_Glass.yaml"
+    if not layers:
+        print("ERROR")
+        print("No implementation layers found.")
+        sys.exit(1)
 
+    return layers
+
+
+# ---------------------------------------------------------------------
+# Naming
+# ---------------------------------------------------------------------
+
+def theme_name(variant: Path) -> str:
+    return f"Smoked Glass {variant.stem}"
+
+
+def output_name(variant: Path) -> str:
+    safe = variant.stem.replace(" ", "_")
+    return f"Smoked_Glass_{safe}.yaml"
+
+
+# ---------------------------------------------------------------------
+# Build
+# ---------------------------------------------------------------------
+
+def build_theme(variant: Path, layers):
+
+    OUTPUT_DIR.mkdir(exist_ok=True)
+
+    outfile = OUTPUT_DIR / output_name(variant)
+
+    print()
+    print(f"Building {theme_name(variant)}")
+    print("-" * 60)
+
+    with outfile.open("w", encoding="utf-8") as out:
+
+        out.write(f"{theme_name(variant)}:\n\n")
+
+        print(f"  • {variant.relative_to(SCRIPT_DIR)}")
+
+        out.write(variant.read_text(encoding="utf-8").rstrip())
+        out.write("\n\n")
+
+        for layer in layers:
+
+            print(f"  • {layer.name}")
+
+            out.write(layer.read_text(encoding="utf-8").rstrip())
+            out.write("\n\n")
+
+    print()
+    print(f"✓ {outfile.relative_to(SCRIPT_DIR)}")
+
+
+# ---------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------
 
 def main():
 
-    output_file = output_filename()
-    theme_name = build_theme_name(output_file)
+    print()
+    print("=" * 60)
+    print("Smoked Glass Builder")
+    print("=" * 60)
 
-    source_files = sorted(SOURCE_DIR.glob("*.yaml"))
+    variants = discover_variants()
+    layers = discover_layers()
 
-    if not source_files:
-        raise SystemExit("No source YAML files found.")
+    print(f"\nFound {len(variants)} variant(s)")
+    print(f"Found {len(layers)} implementation layer(s)")
 
-    with open(SCRIPT_DIR / output_file, "w", encoding="utf-8") as out:
+    for variant in variants:
+        build_theme(variant, layers)
 
-        out.write(f"{theme_name}:\n\n")
-
-        for source in source_files:
-
-            with open(source, encoding="utf-8") as f:
-
-                content = f.read()
-
-                out.write(content)
-
-                if not content.endswith("\n"):
-                    out.write("\n")
-
-                out.write("\n")
-
-    print(f"✓ Built {output_file}")
+    print()
+    print("=" * 60)
+    print(f"Done ({len(variants)} theme{'s' if len(variants) != 1 else ''})")
+    print("=" * 60)
+    print()
 
 
 if __name__ == "__main__":
