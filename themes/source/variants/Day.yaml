@@ -34,11 +34,31 @@
   sg-glass-handle:           "#2A2F33"
 
   # Glass backgrounds
-  sg-glass-light:            "rgba(24,27,29,0.75)"
+  sg-glass-light:            "rgba(24,27,29,0.45)"
   sg-glass-default:          "rgba(24,27,29,0.88)"
 
   # Floating UI
   sg-popup-background:       "rgba(24,27,29,0.96)"
+
+  ###########################################################################
+  # Glass Optics
+  ###########################################################################
+
+  # Surface reflections
+  sg-glass-highlight-primary:    "rgba(255,255,255,0.14)"
+  sg-glass-highlight-secondary:  "rgba(255,255,255,0.05)"
+  sg-glass-highlight-tertiary:   "rgba(255,255,255,0.02)"
+  sg-glass-highlight-radial:     "rgba(255,255,255,0.10)"
+
+  # Edge lighting
+  sg-glass-edge-top:             "rgba(255,255,255,0.18)"
+  sg-glass-edge-left:            "rgba(255,255,255,0.14)"
+  sg-glass-edge-right:           "rgba(255,255,255,0.01)"
+  sg-glass-edge-bottom:          "rgba(255,220,140,0.10)"
+
+  # Frost / depth
+  sg-glass-overlay:              "rgba(255,255,255,0.015)"
+  sg-glass-backdrop-opacity:     "0.55"
 
   ###############################################################################
   # Navigation
@@ -108,6 +128,22 @@
   sg-shadow-soft:           "0 4px 12px rgba(0,0,0,0.18)"
   sg-shadow-medium:         "0 8px 18px rgba(0,0,0,0.25)"
   sg-shadow-floating:       "0 12px 32px rgba(0,0,0,0.30)"
+
+  sg-shadow-rest:      "var(--sg-shadow-soft)"
+  sg-shadow-hover:     "var(--sg-shadow-medium)"
+  sg-shadow-active:    "var(--sg-shadow-medium)"
+  sg-shadow-popup:     "var(--sg-shadow-floating)"
+
+  ###############################################################################
+  # Glow
+  ###############################################################################
+
+  sg-glow-radius:      "18px"
+  sg-glow-spread:      "3px"
+  sg-glow-opacity:     "0.40"
+
+  sg-glow-gold:        "181,138,70"
+  sg-glow-white:       "255,235,190"
 
   ###############################################################################
   # Tooltips

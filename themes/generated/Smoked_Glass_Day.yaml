@@ -36,11 +36,31 @@ Smoked Glass Day:
   sg-glass-handle:           "#2A2F33"
 
   # Glass backgrounds
-  sg-glass-light:            "rgba(24,27,29,0.75)"
+  sg-glass-light:            "rgba(24,27,29,0.45)"
   sg-glass-default:          "rgba(24,27,29,0.88)"
 
   # Floating UI
   sg-popup-background:       "rgba(24,27,29,0.96)"
+
+  ###########################################################################
+  # Glass Optics
+  ###########################################################################
+
+  # Surface reflections
+  sg-glass-highlight-primary:    "rgba(255,255,255,0.14)"
+  sg-glass-highlight-secondary:  "rgba(255,255,255,0.05)"
+  sg-glass-highlight-tertiary:   "rgba(255,255,255,0.02)"
+  sg-glass-highlight-radial:     "rgba(255,255,255,0.10)"
+
+  # Edge lighting
+  sg-glass-edge-top:             "rgba(255,255,255,0.18)"
+  sg-glass-edge-left:            "rgba(255,255,255,0.14)"
+  sg-glass-edge-right:           "rgba(255,255,255,0.01)"
+  sg-glass-edge-bottom:          "rgba(255,220,140,0.10)"
+
+  # Frost / depth
+  sg-glass-overlay:              "rgba(255,255,255,0.015)"
+  sg-glass-backdrop-opacity:     "0.55"
 
   ###############################################################################
   # Navigation
@@ -110,6 +130,22 @@ Smoked Glass Day:
   sg-shadow-soft:           "0 4px 12px rgba(0,0,0,0.18)"
   sg-shadow-medium:         "0 8px 18px rgba(0,0,0,0.25)"
   sg-shadow-floating:       "0 12px 32px rgba(0,0,0,0.30)"
+
+  sg-shadow-rest:      "var(--sg-shadow-soft)"
+  sg-shadow-hover:     "var(--sg-shadow-medium)"
+  sg-shadow-active:    "var(--sg-shadow-medium)"
+  sg-shadow-popup:     "var(--sg-shadow-floating)"
+
+  ###############################################################################
+  # Glow
+  ###############################################################################
+
+  sg-glow-radius:      "18px"
+  sg-glow-spread:      "3px"
+  sg-glow-opacity:     "0.40"
+
+  sg-glow-gold:        "181,138,70"
+  sg-glow-white:       "255,235,190"
 
   ###############################################################################
   # Tooltips
@@ -742,4 +778,116 @@ Smoked Glass Day:
 
   paper-grey-50:                             "#fafafa"
   paper-grey-200:                            "#eeeeee"
+
+###############################################################################
+#
+# Smoked Glass Theme 2.0
+#
+# Glass Renderer
+#
+# This file assembles the semantic design tokens into the default Home Assistant
+# appearance.
+#
+# IMPORTANT
+# ---------
+# • Never define colours here.
+# • Only consume semantic design tokens.
+# • Dashboards should inherit this automatically.
+#
+###############################################################################
+
+
+  #########################################################################
+  # card-mod
+  #########################################################################
+
+  card-mod-theme: Smoked Glass Day
+
+  card-mod-root-yaml: |
+
+    /**********************************************************************
+     * Default card
+     **********************************************************************/
+
+    ha-card {
+
+      background: var(--card-background-color);
+
+      border-radius: var(--ha-card-border-radius);
+
+      border: 1px solid var(--sg-glass-edge-light);
+
+      box-shadow:
+        inset 0 1px var(--sg-glass-reflection-top),
+        inset 0 -1px var(--sg-glass-edge-shadow),
+        var(--sg-shadow-rest);
+
+      transition:
+        background .20s ease,
+        border-color .20s ease,
+        box-shadow .20s ease,
+        transform .20s ease;
+
+      overflow: hidden;
+
+    }
+
+    /**********************************************************************
+     * Hover (desktop)
+     **********************************************************************/
+
+    ha-card:hover {
+
+      box-shadow:
+        inset 0 1px var(--sg-glass-reflection-top),
+        inset 0 -1px var(--sg-glass-edge-shadow),
+        var(--sg-shadow-hover);
+
+    }
+
+    /**********************************************************************
+     * Active / pressed
+     **********************************************************************/
+
+    ha-card:active {
+
+      transform: translateY(1px);
+
+      box-shadow:
+        inset 0 1px var(--sg-glass-reflection-top),
+        inset 0 -1px var(--sg-glass-edge-shadow),
+        var(--sg-shadow-active);
+
+    }
+
+    /**********************************************************************
+     * Dialogs
+     **********************************************************************/
+
+    ha-dialog,
+    .mdc-dialog__surface {
+
+      border: 1px solid var(--sg-glass-edge-light);
+
+      box-shadow:
+        inset 0 1px var(--sg-glass-reflection-top),
+        inset 0 -1px var(--sg-glass-edge-shadow),
+        var(--sg-shadow-popup);
+
+    }
+
+    /**********************************************************************
+     * Menus
+     **********************************************************************/
+
+    mwc-menu,
+    mwc-list {
+
+      border: 1px solid var(--sg-glass-edge-light);
+
+      box-shadow:
+        inset 0 1px var(--sg-glass-reflection-top),
+        var(--sg-shadow-popup);
+
+    }
 
