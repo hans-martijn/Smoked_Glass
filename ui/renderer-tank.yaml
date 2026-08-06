@@ -1,0 +1,94 @@
+################################################################################
+# Smoked Glass Renderer
+#
+# Shared visual renderer for all Smoked Glass cards.
+#
+# Responsibilities:
+# - Background
+# - Glass effect
+# - Reflections
+# - Borders
+# - Shadows
+#
+# Extension point:
+#   renderer_css:
+#     Optional per-card CSS appended to the renderer.
+################################################################################
+
+style: |
+
+  ha-card {
+    position: relative;
+    overflow: hidden;
+    color: var(--primary-text-color);
+  }
+
+  ha-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background:
+      linear-gradient(
+        175deg,
+        var(--sg-glass-highlight-primary) 0%,
+        var(--sg-glass-highlight-secondary) 8%,
+        var(--sg-glass-highlight-tertiary) 16%,
+        transparent 30%
+      );
+  }
+
+  ha-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    pointer-events: none;
+
+    background:
+      linear-gradient(
+        to bottom,
+        var(--sg-glass-edge-top) 0,
+        transparent 5px
+      ),
+
+      linear-gradient(
+        to right,
+        var(--sg-glass-edge-left) 0,
+        transparent 4px
+      ),
+
+      linear-gradient(
+        to top,
+        var(--sg-glass-edge-bottom) 0,
+        transparent 3px
+      );
+
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+  {% set v = states(config.entity)|float(0) %}
+
+  {% if v < 10 %}
+    ha-card {
+      animation: blink-shadow 0.8s infinite;
+    }
+
+    @keyframes blink-shadow {
+      0%   { box-shadow: 0 0 0 0 red; }
+      50%  { box-shadow: 0 0 12px 4px red; }
+      100% { box-shadow: 0 0 0 0 red; }
+    }
+
+  {% elif v < 25 %}
+    ha-card {
+      box-shadow: 0 0 7px 1px darkred;
+    }
+
+  {% endif %}

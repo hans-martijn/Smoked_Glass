@@ -1,0 +1,318 @@
+kiosk_mode:
+  user_settings:
+    - users:
+        - ship
+      kiosk: true
+      hide_header: true
+      hide_sidebar: true
+      hide_menu_button: true
+  hide_header: true
+views:
+  - title: Ship
+    header: {}
+    card_mod:
+      style: |
+        :host {
+          animation: pixelshift 120s infinite alternate;
+        }
+
+        @keyframes pixelshift {
+          0%   { transform: translate(0px, 0px); }
+          50%  { transform: translate(1px, 0px); }
+          100% { transform: translate(0px, 1px); }
+        }
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading_style: title
+            icon: ""
+          - type: markdown
+            content: |
+              # {{ states('sensor.time') }}
+            card_mod: !include ../ui/renderer-clock.yaml
+      - type: grid
+        cards:
+          - type: heading
+            heading_style: title
+            icon: ""
+          - type: horizontal-stack
+            cards:
+              - type: custom:gauge-card-pro
+                entity: sensor.afterburner_current_temperature
+                min: 5
+                max: 35
+                needle: true
+                gradient: true
+                round: full
+                needle_color: white
+                segments:
+                  - pos: 5
+                    color: "#1e90ff"
+                  - pos: 20
+                    color: green
+                  - pos: 25
+                    color: "#ffa500"
+                  - pos: 28
+                    color: "#ff4500"
+                  - pos: 32
+                    color: darkred
+                feature_entity: climate.boat_heating
+                features:
+                  - type: adjust-temperature
+                gradient_resolution: auto
+                tap_action:
+                  action: none
+                hold_action:
+                  action: none
+                icons:
+                  right:
+                    type: hvac-mode
+                    value: climate.afterburner_climate_device_2
+                    hide_label: false
+                    tap_action:
+                      action: perform-action
+                      perform_action: climate.toggle
+                      target:
+                        entity_id: climate.boat_heating
+                value_texts:
+                  primary:
+                    font_size_reduction: 3
+                setpoint:
+                  type: entity
+                  value: sensor.afterburner_temperature_desired
+                  label: true
+                  color: white
+                card_mod: !include ../ui/renderer-heating.yaml
+      - type: grid
+        cards:
+          - type: heading
+            heading: Captain's Cabin
+            icon: mdi:bed-king-outline
+            heading_style: title
+          - type: horizontal-stack
+            square: false
+            cards:
+              - type: custom:button-card
+                entity: switch.a16v3_3_output_3
+                icon: mdi:lightbulb
+                name: Port
+                styles:
+                  card:
+                    - height: 120px
+                  icon:
+                    - height: 58px
+                    - width: 58px
+                state:
+                  - value: "on"
+                    styles:
+                      card:
+                        - box-shadow: 0px 0px 7px 0px gold
+                      icon:
+                        - color: var(--primary-text-color)
+                  - value: "off"
+                    styles:
+                      icon:
+                        - color: var(--disabled-text-color)
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                entity: switch.a16v3_1_output_8
+                icon: mdi:lightbulb
+                name: Sides
+                styles:
+                  card:
+                    - height: 120px
+                  icon:
+                    - height: 58px
+                    - width: 58px
+                state:
+                  - value: "on"
+                    styles:
+                      card:
+                        - box-shadow: 0px 0px 7px 0px gold
+                      icon:
+                        - color: var(--primary-text-color)
+                  - value: "off"
+                    styles:
+                      icon:
+                        - color: var(--disabled-text-color)
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                entity: switch.a16v3_3_output_4
+                icon: mdi:lightbulb
+                name: Starboard
+                styles:
+                  card:
+                    - height: 120px
+                  icon:
+                    - height: 58px
+                    - width: 58px
+                state:
+                  - value: "on"
+                    styles:
+                      card:
+                        - box-shadow: 0px 0px 7px 0px gold
+                      icon:
+                        - color: var(--primary-text-color)
+                  - value: "off"
+                    styles:
+                      icon:
+                        - color: var(--disabled-text-color)
+                card_mod: !include ../ui/renderer.yaml
+      - type: grid
+        cards:
+          - type: heading
+            heading: Scenes
+            heading_style: title
+            icon: mdi:palette-outline
+          - type: grid
+            columns: 3
+            square: false
+            cards:
+              - type: custom:button-card
+                name: Wake Up
+                entity: input_select.active_scene
+                triggers_update:
+                  - input_select.active_scene
+                icon: mdi:bed-empty
+                styles:
+                  card:
+                    - height: 120px
+                tap_action:
+                  action: call-service
+                  service: script.activate_scene
+                  service_data:
+                    scene_entity: scene.wake_up
+                    scene_key: wake_up
+                state:
+                  - value: wake_up
+                    styles:
+                      card:
+                        - box-shadow: 0px 0px 7px 0px gold
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                name: Dark Day
+                entity: input_select.active_scene
+                triggers_update:
+                  - input_select.active_scene
+                icon: mdi:candelabra-fire
+                styles:
+                  card:
+                    - height: 120px
+                tap_action:
+                  action: call-service
+                  service: script.activate_scene
+                  service_data:
+                    scene_entity: scene.dark_day
+                    scene_key: dark_day
+                state:
+                  - value: dark_day
+                    styles:
+                      card:
+                        - box-shadow: 0px 0px 7px 0px gold
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                name: All Off
+                entity: input_select.active_scene
+                triggers_update:
+                  - input_select.active_scene
+                icon: mdi:moon-waxing-crescent
+                styles:
+                  card:
+                    - height: 120px
+                tap_action:
+                  action: call-service
+                  service: script.activate_scene
+                  service_data:
+                    scene_entity: scene.complete_darkness
+                    scene_key: darkness
+                state:
+                  - value: darkness
+                    styles:
+                      card:
+                        - box-shadow: 0px 0px 7px 1px darkred
+                card_mod: !include ../ui/renderer.yaml
+      - type: grid
+        cards:
+          - type: heading
+            heading: Head
+            icon: mdi:shower-head
+            heading_style: title
+          - type: horizontal-stack
+            square: false
+            cards:
+              - type: custom:button-card
+                entity: switch.a16v3_3_output_2
+                icon: mdi:lightbulb
+                name: Port
+                styles:
+                  card:
+                    - height: 120px
+                  icon:
+                    - height: 58px
+                    - width: 58px
+                state:
+                  - value: "on"
+                    styles:
+                      card:
+                        - box-shadow: 0px 0px 7px 0px gold
+                      icon:
+                        - color: var(--primary-text-color)
+                  - value: "off"
+                    styles:
+                      icon:
+                        - color: var(--disabled-text-color)
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                entity: switch.a16v3_3_output_5
+                icon: mdi:lightbulb
+                name: Starboard
+                styles:
+                  card:
+                    - height: 120px
+                  icon:
+                    - height: 58px
+                    - width: 58px
+                state:
+                  - value: "on"
+                    styles:
+                      card:
+                        - box-shadow: 0px 0px 7px 0px gold
+                      icon:
+                        - color: var(--primary-text-color)
+                  - value: "off"
+                    styles:
+                      icon:
+                        - color: var(--disabled-text-color)
+                card_mod: !include ../ui/renderer.yaml
+      - type: grid
+        cards:
+          - type: heading
+            heading_style: title
+            heading: Weather
+          - type: custom:clock-weather-card
+            entity: weather.home
+            hide_today_section: true
+            forecast_rows: 3
+            card_mod: !include ../ui/renderer.yaml
+    type: sections
+    max_columns: 2
+    icon: mdi:sail-boat
+    cards: []
+    background:
+      opacity: 33
+      alignment: center
+      size: cover
+      repeat: repeat
+      attachment: fixed
+      image:
+        media_content_id: media-source://image_upload/42f0061f01cffa91a5ae3d545b67fc4c
+        media_content_type: image/jpeg
+        metadata:
+          title: Boot2.jpeg
+          thumbnail: /api/image/serve/42f0061f01cffa91a5ae3d545b67fc4c/256x256
+          media_class: image
+          navigateIds:
+            - {}
+            - media_content_type: app
+              media_content_id: media-source://image_upload

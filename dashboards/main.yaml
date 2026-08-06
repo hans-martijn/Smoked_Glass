@@ -1,0 +1,1233 @@
+kiosk_mode:
+  user_settings:
+    - users:
+        - guest
+        - ship
+        - frank
+      kiosk: true
+      hide_header: true
+      hide_sidebar: true
+      hide_menu_button: true
+  hide_header: true
+
+views:
+  - title: Ship
+    icon: mdi:sail-boat
+    type: masonry
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: heading
+            heading: Gauges
+            icon: mdi:gauge
+            heading_style: title
+          - square: false
+            type: horizontal-stack
+            cards:
+              - type: custom:gauge-card-pro
+                entity: sensor.fuel_port
+                needle: true
+                gradient: true
+                round: full
+                segments:
+                  - pos: 0
+                    color: red
+                  - pos: 15
+                    color: "#FFA500"
+                  - pos: 30
+                    color: rgb(255,255,0)
+                  - pos: 70
+                    color: var(--green-color)
+                  - pos: 100
+                    color: green
+                min_indicator:
+                  type: number
+                  value: 10
+                  color: red
+                  label: false
+                gradient_resolution: auto
+                titles:
+                  primary: Fuel pt
+                value_texts:
+                  primary_font_size_reduction: 7
+                card_mod: !include ../ui/renderer-tank.yaml
+              - type: custom:gauge-card-pro
+                entity: sensor.fuel_starboard
+                needle: true
+                gradient: true
+                round: full
+                segments:
+                  - pos: 0
+                    color: red
+                  - pos: 15
+                    color: "#FFA500"
+                  - pos: 30
+                    color: rgb(255,255,0)
+                  - pos: 70
+                    color: var(--green-color)
+                  - pos: 100
+                    color: green
+                min_indicator:
+                  type: number
+                  value: 10
+                  color: red
+                gradient_resolution: auto
+                titles:
+                  primary: Fuel sb
+                value_texts:
+                  primary_font_size_reduction: 7
+                card_mod: !include ../ui/renderer-tank.yaml
+          - square: false
+            type: horizontal-stack
+            cards:
+              - type: custom:gauge-card-pro
+                entity: sensor.freshwater_level
+                needle: true
+                gradient: true
+                round: full
+                segments:
+                  - pos: 0
+                    color: red
+                  - pos: 15
+                    color: "#FFA500"
+                  - pos: 30
+                    color: rgb(255,255,0)
+                  - pos: 70
+                    color: var(--green-color)
+                  - pos: 100
+                    color: green
+                min_indicator:
+                  type: number
+                  value: 10
+                  color: red
+                gradient_resolution: auto
+                titles:
+                  primary: Freshwater
+                value_texts:
+                  primary_font_size_reduction: 7
+                card_mod: !include ../ui/renderer-tank.yaml
+              - type: custom:gauge-card-pro
+                entity: sensor.depth_below_surface
+                min: 0
+                max: 10
+                needle: true
+                gradient: true
+                round: full
+                segments:
+                  - pos: 2
+                    color: rgb(255,255,0)
+                  - pos: 4
+                    color: var(--green-color)
+                  - pos: 10
+                    color: green
+                min_indicator:
+                  type: number
+                  value: 2
+                  color: red
+                gradient_resolution: auto
+                titles:
+                  primary: Depth
+                value_texts:
+                  primary_font_size_reduction: 7
+                card_mod: !include ../ui/renderer-depth.yaml
+      - type: vertical-stack
+        cards:
+          - type: heading
+            heading: Outside Lights
+            icon: mdi:car-light-high
+            heading_style: title
+          - type: grid
+            columns: 4
+            square: false
+            cards:
+              - type: custom:button-card
+                name: Sail
+                entity: input_select.navigation_mode
+                icon: local:navigation-lights
+                tap_action:
+                  action: call-service
+                  service: input_select.select_option
+                  service_data:
+                    entity_id: input_select.navigation_mode
+                    option: |
+                      [[[
+                        return entity.state === 'navigation'
+                          ? 'none'
+                          : 'navigation';
+                      ]]]
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 64px
+                    - width: 64px
+                    - color: var(--primary-text-color) !important
+                  img_cell:
+                    - color: var(--primary-text-color) !important
+                state:
+                  - value: navigation
+                    styles:
+                      card:
+                        - box-shadow: 0 0 7px 0px gold
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                name: Steam
+                entity: input_select.navigation_mode
+                icon: local:steam-light
+                tap_action:
+                  action: call-service
+                  service: input_select.select_option
+                  service_data:
+                    entity_id: input_select.navigation_mode
+                    option: |
+                      [[[
+                        return entity.state === 'steam'
+                          ? 'none'
+                          : 'steam';
+                      ]]]
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 64px
+                    - width: 64px
+                    - color: var(--primary-text-color) !important
+                  img_cell:
+                    - color: var(--primary-text-color) !important
+                state:
+                  - value: steam
+                    styles:
+                      card:
+                        - box-shadow: 0 0 7px 0px gold
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                name: Anchor
+                entity: input_select.navigation_mode
+                icon: local:anchor
+                tap_action:
+                  action: call-service
+                  service: input_select.select_option
+                  service_data:
+                    entity_id: input_select.navigation_mode
+                    option: |
+                      [[[
+                        return entity.state === 'anchor'
+                          ? 'none'
+                          : 'anchor';
+                      ]]]
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 64px
+                    - width: 64px
+                    - color: var(--primary-text-color) !important
+                  img_cell:
+                    - color: var(--primary-text-color) !important
+                state:
+                  - value: anchor
+                    styles:
+                      card:
+                        - box-shadow: 0 0 7px 0px gold
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                entity: switch.a16v3_1_output_4
+                name: Deck
+                icon: local:deck-light
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 58px
+                    - color: var(--primary-text-color) !important
+                  img_cell:
+                    - color: var(--primary-text-color) !important
+                state:
+                  - value: "on"
+                    styles:
+                      card:
+                        - box-shadow: 0 0 7px 0px gold
+                  - value: "off"
+                card_mod: !include ../ui/renderer.yaml
+      - type: vertical-stack
+        cards:
+          - type: heading
+            heading: Environment
+            icon: mdi:gauge-low
+            heading_style: title
+          - type: horizontal-stack
+            square: false
+            cards:
+              - type: custom:button-card
+                entity: sensor.water_temperature
+                name: Water Temp.
+                show_state: true
+                show_units: true
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 58px
+                    - width: 58px
+                  name:
+                    - font-size: 10px
+                state:
+                  - operator: <=
+                    value: 1.5
+                    styles:
+                      card:
+                        - box-shadow: 0 0 7px 0px purple
+                  - operator: <=
+                    value: 10
+                    styles:
+                      card:
+                        - box-shadow: 0 0 7px 0px blue
+                  - operator: <=
+                    value: 16
+                    styles:
+                      card:
+                        - box-shadow: 0 0 7px 0px aqua
+                  - operator: <=
+                    value: 18
+                    styles:
+                      card:
+                        - box-shadow: 0 0 7px 0px teal
+                  - operator: ">"
+                    value: 18
+                    styles:
+                      card:
+                        - box-shadow: 0 0 7px 0px darkgreen
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                entity: sensor.co_carbon_monoxide
+                name: CO
+                show_state: true
+                show_units: true
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 64px
+                    - width: 64px
+                  name:
+                    - font-size: 10px
+                state:
+                  - operator: template
+                    value: |
+                      [[[ return parseFloat(entity.state) > 150; ]]]
+                    styles:
+                      card:
+                        - animation: blink-shadow 0.8s infinite
+
+                  - operator: template
+                    value: |
+                      [[[ return parseFloat(entity.state) > 50; ]]]
+                    styles:
+                      card:
+                        - box-shadow: 0 0 7px 2px orange
+
+                  - operator: default
+                    styles:
+                      card:
+                        - box-shadow: 0 0 7px 1px darkgreen
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                entity: sensor.diesel_since_refill
+                name: Diesel Since Refill
+                icon: mdi:fuel
+                show_state: true
+                show_units: true
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 58px
+                    - width: 58px
+                  name:
+                    - font-size: 10px
+                card_mod: !include ../ui/renderer.yaml
+      - type: vertical-stack
+        cards:
+          - type: heading
+            heading: Salon
+            icon: mdi:sofa-outline
+            heading_style: title
+          - type: horizontal-stack
+            square: false
+            cards:
+              - type: custom:button-card
+                name: Movie Night
+                icon: mdi:theater
+                entity: input_select.active_scene
+                tap_action:
+                  action: call-service
+                  service: script.activate_scene
+                  service_data:
+                    scene_entity: scene.movie_night
+                    scene_key: movie_night
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                state:
+                  - value: movie_night
+                    styles:
+                      card:
+                        - box-shadow: 0 0 7px 0px gold
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                name: Wake Up
+                icon: mdi:bed-empty
+                entity: input_select.active_scene
+                tap_action:
+                  action: call-service
+                  service: script.activate_scene
+                  service_data:
+                    scene_entity: scene.wake_up
+                    scene_key: wake_up
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                state:
+                  - value: wake_up
+                    styles:
+                      card:
+                        - box-shadow: 0 0 7px 0px gold
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                name: All Off
+                icon: mdi:moon-waxing-crescent
+                entity: input_select.active_scene
+                tap_action:
+                  action: call-service
+                  service: script.activate_scene
+                  service_data:
+                    scene_entity: scene.complete_darkness
+                    scene_key: darkness
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                state:
+                  - value: darkness
+                    styles:
+                      card:
+                        - box-shadow: 0 0 7px 1px darkred
+                card_mod: !include ../ui/renderer.yaml
+          - type: horizontal-stack
+            square: false
+            cards:
+              - type: custom:button-card
+                name: Dark Day
+                icon: mdi:candelabra-fire
+                entity: input_select.active_scene
+                tap_action:
+                  action: call-service
+                  service: script.activate_scene
+                  service_data:
+                    scene_entity: scene.dark_day
+                    scene_key: dark_day
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                state:
+                  - value: dark_day
+                    styles:
+                      card:
+                        - box-shadow: 0 0 7px 0px gold
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                name: Steering Hut
+                icon: mdi:weather-night
+                entity: input_select.active_scene
+                tap_action:
+                  action: call-service
+                  service: script.activate_scene
+                  service_data:
+                    scene_entity: scene.steering_by_night
+                    scene_key: steering_night
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                state:
+                  - value: steering_night
+                    styles:
+                      card:
+                        - box-shadow: 0 0 7px 0px darkred
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                name: Steering Hut
+                icon: mdi:ship-wheel
+                entity: input_select.active_scene
+                tap_action:
+                  action: call-service
+                  service: script.activate_scene
+                  service_data:
+                    scene_entity: scene.steering_by_day
+                    scene_key: steering_day
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                state:
+                  - value: steering_day
+                    styles:
+                      card:
+                        - box-shadow: 0 0 7px 0px gold
+                card_mod: !include ../ui/renderer.yaml
+          - type: horizontal-stack
+            cards:
+              - type: custom:gauge-card-pro
+                entity: sensor.afterburner_current_temperature
+                min: 5
+                max: 35
+                needle: true
+                gradient: true
+                round: full
+                needle_color: white
+                segments:
+                  - pos: 5
+                    color: "#1e90ff"
+                  - pos: 20
+                    color: green
+                  - pos: 25
+                    color: "#ffa500"
+                  - pos: 28
+                    color: "#ff4500"
+                  - pos: 32
+                    color: darkred
+                feature_entity: climate.boat_heating
+                features:
+                  - type: adjust-temperature
+                gradient_resolution: auto
+                tap_action:
+                  action: none
+                hold_action:
+                  action: none
+                icons:
+                  right:
+                    type: hvac-mode
+                    value: climate.afterburner_climate_device_2
+                    hide_label: false
+                    tap_action:
+                      action: perform-action
+                      perform_action: climate.toggle
+                      target:
+                        entity_id: climate.boat_heating
+                value_texts:
+                  primary:
+                    font_size_reduction: 0
+                setpoint:
+                  type: entity
+                  color: white
+                  value: sensor.afterburner_temperature_desired
+                  label: true
+                animation_speed: normal
+                card_mod:
+                  style: >
+                    * {
+                      --main-needle-stroke-width: 1px;
+                      --main-needle-stroke-color: white;
+                    }
+
+                    {% if state_attr('climate.boat_heating', 'hvac_action') ==
+                    'heating'
+
+                    %}
+
+
+                    ha-card {
+                      box-shadow: 0 0 5px 0px green;
+                    }
+
+
+                    {% endif %}
+                card_mod: !include ../ui/renderer.yaml
+          - type: horizontal-stack
+            square: false
+            cards:
+              - type: custom:button-card
+                entity: switch.a16v3_1_output_5
+                icon: mdi:lightbulb
+                name: Side
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 58px
+                    - width: 58px
+                state:
+                  - value: "on"
+                    styles:
+                      card:
+                        - box-shadow: 0px 0px 7px 0px gold
+                      icon:
+                        - color: var(--primary-text-color)
+                  - value: "off"
+                    styles:
+                      icon:
+                        - color: var(--disabled-text-color)
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                entity: switch.a16v3_1_output_6
+                icon: mdi:lightbulb
+                name: Floor
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 58px
+                    - width: 58px
+                state:
+                  - value: "on"
+                    styles:
+                      card:
+                        - box-shadow: 0px 0px 7px 0px gold
+                      icon:
+                        - color: var(--primary-text-color)
+                  - value: "off"
+                    styles:
+                      icon:
+                        - color: var(--disabled-text-color)
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                entity: switch.a16v3_1_output_9
+                icon: mdi:lightbulb
+                name: Back
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 58px
+                    - width: 58px
+                state:
+                  - value: "on"
+                    styles:
+                      card:
+                        - box-shadow: 0px 0px 7px 0px gold
+                      icon:
+                        - color: var(--primary-text-color)
+                  - value: "off"
+                    styles:
+                      icon:
+                        - color: var(--disabled-text-color)
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                entity: light.galley
+                icon: mdi:lightbulb
+                name: Galley
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 58px
+                    - width: 58px
+                state:
+                  - value: "on"
+                    styles:
+                      card:
+                        - box-shadow: 0px 0px 7px 0px gold
+                      icon:
+                        - color: var(--primary-text-color)
+                  - value: "off"
+                    styles:
+                      icon:
+                        - color: var(--disabled-text-color)
+                card_mod: !include ../ui/renderer.yaml
+      - type: vertical-stack
+        cards:
+          - type: heading
+            heading: Steering Hut
+            icon: mdi:ship-wheel
+            heading_style: title
+          - type: horizontal-stack
+            columns: 3
+            square: false
+            visibility:
+              - condition: user
+                users:
+                  - adbe1b4aafcb4436b5f517516b43b392
+                  - e315ba0a377d41da94729cf403ee06c7
+            cards:
+              - type: custom:button-card
+                entity: switch.a16v3_4_output_1
+                icon: mdi:monitor
+                name: Left Inside
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 58px
+                    - width: 58px
+                state:
+                  - value: "on"
+                    styles:
+                      card:
+                        - box-shadow: 0px 0px 7px 0px gold
+                      icon:
+                        - color: var(--primary-text-color)
+                  - value: "off"
+                    styles:
+                      icon:
+                        - color: var(--disabled-text-color)
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                entity: switch.a16v3_4_output_2
+                icon: mdi:monitor
+                name: Right Inside
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 58px
+                    - width: 58px
+                state:
+                  - value: "on"
+                    styles:
+                      card:
+                        - box-shadow: 0px 0px 7px 0px gold
+                      icon:
+                        - color: var(--primary-text-color)
+                  - value: "off"
+                    styles:
+                      icon:
+                        - color: var(--disabled-text-color)
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                entity: switch.a16v3_4_output_3
+                icon: mdi:monitor
+                name: Helm
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 58px
+                    - width: 58px
+                state:
+                  - value: "on"
+                    styles:
+                      card:
+                        - box-shadow: 0px 0px 7px 0px gold
+                      icon:
+                        - color: var(--primary-text-color)
+                  - value: "off"
+                    styles:
+                      icon:
+                        - color: var(--disabled-text-color)
+                card_mod: !include ../ui/renderer.yaml
+          - type: horizontal-stack
+            columns: 2
+            square: false
+            cards:
+              - type: custom:button-card
+                entity: light.steering_hut
+                hold_action:
+                  action: more-info
+                name: Port
+                icon: mdi:lightbulb
+                show_icon: true
+                layout: vertical
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 58px
+                    - width: 58px
+                state:
+                  - value: "on"
+                    styles:
+                      card:
+                        - box-shadow: |
+                            [[[                  
+                              if (entity.attributes.rgb_color) {
+                                const [r,g,b] = entity.attributes.rgb_color;
+                                return `0 0 10px 0px rgb(${r},${g},${b})`;
+                              }
+                              return '0 0 10px 0px var(--accent-color)';
+                            ]]]
+                      icon:
+                        - color: var(--primary-text-color)
+                  - value: "off"
+                    styles:
+                      icon:
+                        - color: var(--disabled-text-color)
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                entity: light.steering_hut_segment_1
+                hold_action:
+                  action: more-info
+                name: Starboard
+                icon: mdi:lightbulb
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 58px
+                    - width: 58px
+                state:
+                  - value: "on"
+                    styles:
+                      card:
+                        - box-shadow: |
+                            [[[                  
+                              if (entity.attributes.rgb_color) {
+                                const [r,g,b] = entity.attributes.rgb_color;
+                                return `0 0 10px 0px rgb(${r},${g},${b})`;
+                              }
+                              return '0 0 10px 0px var(--accent-color)';
+                            ]]]
+                      icon:
+                        - color: var(--primary-text-color)
+                  - value: "off"
+                    styles:
+                      icon:
+                        - color: var(--disabled-text-color)
+                card_mod: !include ../ui/renderer.yaml
+          - type: horizontal-stack
+            square: false
+            cards:
+              - type: custom:button-card
+                entity: sensor.solar_energy_daily
+                name: Power Today
+                icon: mdi:solar-power
+                show_state: true
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 48px
+                    - width: 48px
+                    - color: var(--primary-text-color)
+                  name:
+                    - font-size: 10px
+                state:
+                  - value: 0
+                    operator: ">"
+                    styles:
+                      card:
+                        - box-shadow: 0 0 7px 0px darkgreen
+                grid_options:
+                  rows: 2
+                  columns: 3
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                entity: sensor.solar_power
+                name: Power
+                icon: mdi:solar-power-variant
+                show_state: true
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 48px
+                    - width: 48px
+                    - color: var(--primary-text-color)
+                  name:
+                    - font-size: 10px
+                state:
+                  - value: 0
+                    operator: ">"
+                    styles:
+                      card:
+                        - box-shadow: 0 0 7px 0px darkgreen
+                grid_options:
+                  rows: 2
+                  columns: 3
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                entity: sensor.battery_voltage
+                name: Current
+                icon: mdi:meter-electric-outline
+                show_state: true
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 48px
+                    - width: 48px
+                    - color: var(--primary-text-color)
+                  name:
+                    - font-size: 10px
+                state:
+                  - operator: <=
+                    value: 11.8
+                    styles:
+                      card:
+                        - box-shadow: 0 0 7px 1px red
+                  - operator: <=
+                    value: 12
+                    styles:
+                      card:
+                        - box-shadow: 0 0 7px 1px orange
+                  - operator: <=
+                    value: 12.5
+                    styles:
+                      card:
+                        - box-shadow: 0 0 7px 1px green
+                  - operator: ">"
+                    value: 12.5
+                    styles:
+                      card:
+                        - box-shadow: 0 0 7px 1px darkgreen
+                grid_options:
+                  rows: 2
+                  columns: 3
+                card_mod: !include ../ui/renderer.yaml
+      - type: vertical-stack
+        cards:
+          - type: heading
+            heading: Head
+            icon: mdi:shower-head
+            heading_style: title
+          - type: horizontal-stack
+            square: false
+            cards:
+              - type: custom:button-card
+                entity: switch.a16v3_3_output_2
+                icon: mdi:lightbulb
+                name: Port
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 58px
+                    - width: 58px
+                state:
+                  - value: "on"
+                    styles:
+                      card:
+                        - box-shadow: 0px 0px 7px 0px gold
+                      icon:
+                        - color: var(--primary-text-color)
+                  - value: "off"
+                    styles:
+                      icon:
+                        - color: var(--disabled-text-color)
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                entity: switch.a16v3_3_output_5
+                icon: mdi:lightbulb
+                name: Starboard
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 58px
+                    - width: 58px
+                state:
+                  - value: "on"
+                    styles:
+                      card:
+                        - box-shadow: 0px 0px 7px 0px gold
+                      icon:
+                        - color: var(--primary-text-color)
+                  - value: "off"
+                    styles:
+                      icon:
+                        - color: var(--disabled-text-color)
+                card_mod: !include ../ui/renderer.yaml
+      - type: vertical-stack
+        cards:
+          - type: heading
+            heading: Captain's Cabin
+            icon: mdi:bed-king-outline
+            heading_style: title
+          - type: horizontal-stack
+            square: false
+            cards:
+              - type: custom:button-card
+                entity: switch.a16v3_3_output_3
+                icon: mdi:lightbulb
+                name: Port
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 58px
+                    - width: 58px
+                state:
+                  - value: "on"
+                    styles:
+                      card:
+                        - box-shadow: 0px 0px 7px 0px gold
+                      icon:
+                        - color: var(--primary-text-color)
+                  - value: "off"
+                    styles:
+                      icon:
+                        - color: var(--disabled-text-color)
+                card_mod: !include ../ui/renderer.yaml 
+              - type: custom:button-card
+                entity: switch.a16v3_1_output_8
+                icon: mdi:lightbulb
+                name: Sides
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 58px
+                    - width: 58px
+                state:
+                  - value: "on"
+                    styles:
+                      card:
+                        - box-shadow: 0px 0px 7px 0px gold
+                      icon:
+                        - color: var(--primary-text-color)
+                  - value: "off"
+                    styles:
+                      icon:
+                        - color: var(--disabled-text-color)
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                entity: switch.a16v3_3_output_4
+                icon: mdi:lightbulb
+                name: Starboard
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 58px
+                    - width: 58px
+                state:
+                  - value: "on"
+                    styles:
+                      card:
+                        - box-shadow: 0px 0px 7px 0px gold
+                      icon:
+                        - color: var(--primary-text-color)
+                  - value: "off"
+                    styles:
+                      icon:
+                        - color: var(--disabled-text-color)
+                card_mod: !include ../ui/renderer.yaml
+      - type: vertical-stack
+        cards:
+          - type: heading
+            heading: Cabins
+            icon: mdi:bunk-bed-outline
+            heading_style: title
+          - type: horizontal-stack
+            square: false
+            cards:
+              - type: custom:button-card
+                entity: switch.a16v3_3_output_1
+                icon: mdi:chair-rolling
+                name: Port
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 58px
+                    - width: 58px
+                state:
+                  - value: "on"
+                    styles:
+                      card:
+                        - box-shadow: 0px 0px 7px 0px gold
+                      icon:
+                        - color: var(--primary-text-color)
+                  - value: "off"
+                    styles:
+                      icon:
+                        - color: var(--disabled-text-color)
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                entity: switch.a16v3_3_output_6
+                icon: local:bunk-bed-top
+                name: Starboard
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 58px
+                    - width: 58px
+                state:
+                  - value: "on"
+                    styles:
+                      card:
+                        - box-shadow: 0px 0px 7px 0px gold
+                      icon:
+                        - color: var(--primary-text-color)
+                  - value: "off"
+                    styles:
+                      icon:
+                        - color: var(--disabled-text-color)
+                card_mod: !include ../ui/renderer.yaml
+              - type: custom:button-card
+                entity: switch.a16v3_3_output_7
+                icon: local:bunk-bed-bottom
+                name: Starboard
+                styles:
+                  card:
+                    - height: 120px
+                    - font-size: 0.85em
+                  icon:
+                    - height: 58px
+                    - width: 58px
+                state:
+                  - value: "on"
+                    styles:
+                      card:
+                        - box-shadow: 0px 0px 7px 0px gold
+                      icon:
+                        - color: var(--primary-text-color)
+                  - value: "off"
+                    styles:
+                      icon:
+                        - color: var(--disabled-text-color)
+                card_mod: !include ../ui/renderer.yaml
+      - type: vertical-stack
+        cards:
+          - type: heading
+            heading: Calendar
+            icon: mdi:calendar
+          - entities:
+              - calendar.family
+            days_to_show: 7
+            compact_days_to_show: 0
+            compact_events_to_show: 7
+            filter_duplicates: true
+            time_24h: true
+            show_location: false
+            weather:
+              position: date
+              date:
+                show_conditions: true
+                show_high_temp: true
+                show_low_temp: false
+                icon_size: 14px
+                font_size: 12px
+              event:
+                show_conditions: true
+                show_temp: true
+                icon_size: 14px
+                font_size: 12px
+            type: custom:calendar-card-pro
+            card_mod: !include ../ui/renderer.yaml
+      - type: vertical-stack
+        cards:
+          - type: heading
+            heading: Solar & Lunar Cycle
+            icon: mdi:theme-light-dark
+            heading_style: title
+          - type: custom:horizon-card
+            moon: true
+            refresh_period: 60
+            fields:
+              sunrise: true
+              sunset: true
+              dawn: true
+              noon: true
+              dusk: true
+              azimuth: true
+              elevation: true
+              sun_azimuth: false
+              moon_azimuth: false
+              sun_elevation: false
+              moon_elevation: false
+              moonrise: false
+              moonset: false
+              moon_phase: false
+            southern_flip: false
+            card_mod: !include ../ui/renderer.yaml
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: heading
+            heading: Weather
+            icon: mdi:sun-snowflake
+            heading_style: title
+          - type: custom:simple-weather-card
+            entity: weather.home
+            name: " "
+            card_mod:
+              style: |
+                :host {
+                  --stack-card-margin: 0px;
+                  --ha-card-border-radius: 0px;
+                  --ha-card-border-width: 0px;
+                }
+          - type: custom:clock-weather-card
+            entity: weather.home
+            hide_clock: true
+            date_pattern: ccc, d.MM.yy
+            animated_icon: false
+            hide_today_section: true
+            forecast_rows: 3
+            card_mod:
+              style: |
+                :host {
+                  --stack-card-margin: 0px;
+                  --ha-card-border-radius: 0px;
+                  --ha-card-border-width: 0px;
+                }
+          - type: custom:tsmoon-card
+            title: " "
+            icon_type: round
+            time_format: 24h
+            language: en
+            hemisphere: "N"
+            card_mod: !include ../ui/renderer.yaml
+      - type: custom:windy-card
+        default_mode: map_only
+        metric_temp: °C
+        metric_rain: mm
+        metric_wind: bft
+        zoom: 11
+        overlay: wind
+        product: adome
+        level: surface
+        aspect_ratio: "1:1"
+        location: zone.home
+        height: 0
+        show_marker: true
+        show_spot: true
+        hide_message: true
+        show_pressure: false
+        no_padding: true
+    background:
+      opacity: 33
+      alignment: center
+      size: cover
+      repeat: no-repeat
+      attachment: fixed
+      image:
+        media_content_id: media-source://image_upload/b5478972a3a8ade914c62896ba31ad29
+        media_content_type: image/jpeg
+        metadata:
+          title: Boot2.jpeg
+          thumbnail: /api/image/serve/b5478972a3a8ade914c62896ba31ad29/256x256
+          media_class: image
+          navigateIds:
+            - {}
+            - media_content_type: app
+              media_content_id: media-source://image_upload
