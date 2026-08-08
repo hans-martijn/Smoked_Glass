@@ -23,6 +23,12 @@
   primary-text-color:       "var(--sg-text-primary)"
   text-primary-color:       "var(--sg-text-primary)"
 
+  primary-font-family:      "var(--sg-font-family)"
+  ha-font-family-body:      "var(--sg-font-family)"
+  ha-font-family-heading:   "var(--sg-font-family)"
+  ha-font-family-code:      "var(--sg-font-family)"
+  ha-font-family-longform:  "var(--sg-font-family)"
+
   secondary-text-color:     "var(--sg-text-secondary)"
 
   disabled-text-color:      "var(--sg-text-disabled)"

@@ -109,6 +109,13 @@ def build_theme(variant: Path, layers):
         out.write(variant.read_text(encoding="utf-8").rstrip())
         out.write("\n\n")
 
+        # card-mod theme identity is generated from the variant name so that
+        # shared implementation layers never need to hardcode a theme name.
+        out.write("# ---------------------------------------------------------------------\n")
+        out.write("# Generated theme identity\n")
+        out.write("# ---------------------------------------------------------------------\n")
+        out.write(f"  card-mod-theme: {theme_name(variant)}\n\n")
+
         for layer in layers:
 
             print(f"  • {layer.name}")

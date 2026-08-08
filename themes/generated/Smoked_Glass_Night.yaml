@@ -88,6 +88,12 @@ Smoked Glass Night:
   sg-text-disabled:         "rgba(140, 30, 30, 0.7)"
 
   ###########################################################################
+  # Typography
+  ###########################################################################
+
+  sg-font-family:          "'Orbitron'"
+
+  ###########################################################################
   # Status
   ###########################################################################
 
@@ -228,6 +234,11 @@ Smoked Glass Night:
   sg-card-radius: "14px"
   sg-card-border-width: "1px"
 
+# ---------------------------------------------------------------------
+# Generated theme identity
+# ---------------------------------------------------------------------
+  card-mod-theme: Smoked Glass Night
+
 ################################################################################
 #
 # SMOKED GLASS
@@ -252,6 +263,12 @@ Smoked Glass Night:
 
   primary-text-color:       "var(--sg-text-primary)"
   text-primary-color:       "var(--sg-text-primary)"
+
+  primary-font-family:      "var(--sg-font-family)"
+  ha-font-family-body:      "var(--sg-font-family)"
+  ha-font-family-heading:   "var(--sg-font-family)"
+  ha-font-family-code:      "var(--sg-font-family)"
+  ha-font-family-longform:  "var(--sg-font-family)"
 
   secondary-text-color:     "var(--sg-text-secondary)"
 
@@ -801,93 +818,25 @@ Smoked Glass Night:
   # card-mod
   #########################################################################
 
-  card-mod-theme: Smoked Glass Day
-
-  card-mod-root-yaml: |
-
-    /**********************************************************************
-     * Default card
-     **********************************************************************/
-
-    ha-card {
-
-      background: var(--card-background-color);
-
-      border-radius: var(--ha-card-border-radius);
-
-      border: 1px solid var(--sg-glass-edge-light);
-
-      box-shadow:
-        inset 0 1px var(--sg-glass-reflection-top),
-        inset 0 -1px var(--sg-glass-edge-shadow),
-        var(--sg-shadow-rest);
-
-      transition:
-        background .20s ease,
-        border-color .20s ease,
-        box-shadow .20s ease,
-        transform .20s ease;
-
-      overflow: hidden;
-
+  card-mod-root: |
+    hui-view-background {
+      background-image: url("/local/boot.jpeg") !important;
+      background-position: center !important;
+      background-size: cover !important;
+      background-repeat: no-repeat !important;
+      background-attachment: fixed !important;
+      opacity: 0.33 !important;
     }
 
-    /**********************************************************************
-     * Hover (desktop)
-     **********************************************************************/
-
-    ha-card:hover {
-
-      box-shadow:
-        inset 0 1px var(--sg-glass-reflection-top),
-        inset 0 -1px var(--sg-glass-edge-shadow),
-        var(--sg-shadow-hover);
-
+    .header .toolbar ha-tab-group {
+      position: absolute !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      flex-grow: 0 !important;
+      width: max-content !important;
     }
 
-    /**********************************************************************
-     * Active / pressed
-     **********************************************************************/
-
-    ha-card:active {
-
-      transform: translateY(1px);
-
-      box-shadow:
-        inset 0 1px var(--sg-glass-reflection-top),
-        inset 0 -1px var(--sg-glass-edge-shadow),
-        var(--sg-shadow-active);
-
-    }
-
-    /**********************************************************************
-     * Dialogs
-     **********************************************************************/
-
-    ha-dialog,
-    .mdc-dialog__surface {
-
-      border: 1px solid var(--sg-glass-edge-light);
-
-      box-shadow:
-        inset 0 1px var(--sg-glass-reflection-top),
-        inset 0 -1px var(--sg-glass-edge-shadow),
-        var(--sg-shadow-popup);
-
-    }
-
-    /**********************************************************************
-     * Menus
-     **********************************************************************/
-
-    mwc-menu,
-    mwc-list {
-
-      border: 1px solid var(--sg-glass-edge-light);
-
-      box-shadow:
-        inset 0 1px var(--sg-glass-reflection-top),
-        var(--sg-shadow-popup);
-
+    .header .toolbar > .action-items {
+      margin-left: auto !important;
     }
 

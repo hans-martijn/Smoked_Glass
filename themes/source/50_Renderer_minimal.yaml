@@ -1,0 +1,43 @@
+###############################################################################
+#
+# Smoked Glass Theme 2.0
+#
+# Glass Renderer
+#
+# This file assembles the semantic design tokens into the default Home Assistant
+# appearance.
+#
+# IMPORTANT
+# ---------
+# • Never define colours here.
+# • Only consume semantic design tokens.
+# • Dashboards should inherit this automatically.
+#
+###############################################################################
+
+
+  #########################################################################
+  # card-mod
+  #########################################################################
+
+  card-mod-root: |
+    hui-view-background {
+      background-image: url("/local/boot.jpeg") !important;
+      background-position: center !important;
+      background-size: cover !important;
+      background-repeat: no-repeat !important;
+      background-attachment: fixed !important;
+      opacity: 0.33 !important;
+    }
+
+    .header .toolbar ha-tab-group {
+      position: absolute !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      flex-grow: 0 !important;
+      width: max-content !important;
+    }
+
+    .header .toolbar > .action-items {
+      margin-left: auto !important;
+    }
